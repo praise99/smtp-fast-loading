@@ -1,0 +1,49 @@
+<div class="attached warning" *ngIf="error">
+  <div class="header">
+      {{error}}
+  </div>
+</div>
+<div style="padding:5rem 0;" class="ui padded grid">
+ <div class="row">
+  <div style="padding: 1rem 5rem;position: relative;top:4rem" class="eight wide column">
+   <div class="wording">
+    <p style="padding: .5rem 0;color: #222;font-weight: 700;" class="ui medium header">Login into your Account</p>
+    <p style="padding: 1.2rem 0;color: #222;">Fill in the details below to access your dashboard</p>
+   </div>
+   <div  class="container">
+    <form class="ui form" [formGroup]="loginForm">
+     <div style="padding: .9rem 0;" class="field">
+      <label>Work email address</label>
+      <input
+        formControlName="email"
+        type="text"
+        placeholder="Enter email address"
+      />
+     </div>
+
+
+     <div style="padding: .8rem 0;" class="field">
+      <label>Password</label>
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="Enter password"
+      />
+
+     </div>
+
+     <button class="ui button" type="submit" [disabled]="loginBtnClicked || !loginForm.valid"  (click)="login()">
+      <span *ngIf="!loginBtnClicked">Login</span>
+      <div *ngIf="loginBtnClicked" style="height:10px;padding:10px 0 19px 0;"class="ui active inline loader"></div>
+     </button>
+   </form>
+ </div>
+   </div>
+
+  <div class="eight wide column">
+    <div class="iamge">
+<img src="../../../assets/login.svg" alt="">
+    </div>
+  </div>
+</div>
+</div>
