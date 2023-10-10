@@ -1,5 +1,28 @@
+.ui.medium.header {
+  font-size: 28px;
+  font-style: normal;
+}
+
+.field label {
+  text-transform: capitalize;
+  color: #222;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+
+  + input::placeholder {
+    color: #696969;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 12px;
+  }
+}
+
 .ui.button {
-  width: 500px;
+  width: 100%;
   margin-top: 2rem;
   height: 50px;
   background-color: #031F68;
