@@ -3,7 +3,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { SuiModalService } from '@richardlt/ng2-semantic-ui';
 // import { UsersService } from 'src/app/services/users.service';
-import { ConfirmModal } from 'src/modules/shared/modals/confirm-modal/confirm-modal.component';
+import { ConfirmModal } from 'src/app/modals/confirm-modal/confirm-modal.component';
 // import { UpdatePasswordModal } from 'src/app/modals/update-password/update-password-modal.component';
 @Component({
   selector: 'app-header',
