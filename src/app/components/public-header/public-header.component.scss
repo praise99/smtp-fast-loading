@@ -1,0 +1,33 @@
+@import '/src/styles.scss';
+
+.ui.menu.toolbar{
+ background-color: $main-color;
+ border-radius: none;
+ .item.header{
+  img{
+   padding: 0 .5rem;
+   border-right:2px solid #fff ;
+  }
+  .logo-name{
+   color: #fff;
+   p{
+    // line-height: 22px;
+    width:400px;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family:"roboto-light";
+    margin: 0 .4rem;
+   }
+  }
+ }
+ .name{
+  color: #fff;
+  p{
+   line-height: 22px;
+   width:120px;
+   font-size: 1rem;
+   font-family:"roboto-light";
+   margin: 0 .4rem;
+  }
+ }
+}

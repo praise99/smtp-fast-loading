@@ -7,20 +7,20 @@
  <div class="row">
   <div style="padding: 1rem 5rem;position: relative;top:4rem" class="eight wide column">
    <div class="wording">
-    <p style="padding: .5rem 0;color: #222;font-weight: 700;" class="ui medium header">Login into your Account</p>
-    <p style="padding: 1.2rem 0;color: #222;">Fill in the details below to access your dashboard</p>
+    <p style="padding: .5rem 0;color: #222;font-weight: 700; margin: 0;" class="ui medium header">Login into your Account</p>
+    <p style="padding: 1.2rem 0;color: #222; font-size: 16px; line-height: 24px;">Fill in the details below to access your dashboard</p>
    </div>
+
    <div  class="container">
     <form class="ui form" [formGroup]="loginForm">
      <div style="padding: .9rem 0;" class="field">
       <label>Work email address</label>
       <input
         formControlName="email"
-        type="text"
+        type="email"
         placeholder="Enter email address"
       />
      </div>
-
 
      <div style="padding: .8rem 0;" class="field">
       <label>Password</label>
@@ -29,6 +29,7 @@
         type="password"
         placeholder="Enter password"
       />
+
 
      </div>
 

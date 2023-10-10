@@ -1,0 +1,32 @@
+.panel {
+	.ui.modal > .actions {
+		display: block;
+		position: unset;
+		bottom: 0px;
+		width: 100%;
+		text-align: left;
+	}
+	.ui.modal {
+		height: 100vh;
+		border-radius: 0;
+		top: 0 !important;
+		right: 0 !important;
+		margin: 0 !important;
+
+		// i.icon,
+		// i.icons {
+		// 	font-size: 1.3em;
+		// }
+		// .ui.circular.button {
+		// 	padding: 0.7em;
+		// 	border-radius: 5677rem;
+		// }
+		// .ui.button {
+		// 	min-width: 10px;
+		// }
+		// .ui.button:not(.icon) > .icon:not(.button):not(.dropdown),
+		// .ui.button:not(.icon) > .icons:not(.button):not(.dropdown) {
+		// 	margin: 0;
+		// }
+	}
+}
