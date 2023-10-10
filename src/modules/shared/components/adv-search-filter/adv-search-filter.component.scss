@@ -1,0 +1,123 @@
+$border: 1px solid rgba(196, 196, 196, 0.92);
+
+:host {
+	.panel {
+		background: #f0f1f8;
+		border-radius: 4px;
+	}
+	.ui.input > input {
+		background: #fff;
+	}
+	.ui.selection.dropdown {
+		background: #fff;
+	}
+	label,
+	.icon {
+		color: #6a6a6a;
+	}
+	.selection {
+		border: none;
+	}
+	box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.15) !important;
+	.ui .container {
+		width: 1457px !important;
+		padding: 10px 0 10px;
+	}
+	.ui.menu {
+		border-radius: 0px !important;
+	}
+	.ui.top.right.pointing.dropdown > .menu {
+		top: 100%;
+		bottom: auto;
+		right: 0;
+		left: auto;
+		margin: .2em 0 0;
+	}
+
+	.item.user {
+		color: #fff !important;
+	}
+	.toolbar {
+		background: #142656 !important;
+		// box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.15) !important;
+	}
+	.ui.avatar.image {
+		border: 2px solid #fff;
+	}
+}
+
+.icon-input {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	background-color: #FFF;
+	height: 40px;
+	padding: 10px;
+	border: 1px solid #D2D5D8;
+	border-radius: 8px;
+	width: 250px;
+	input {
+		all: unset;
+		&::placeholder {
+			color: #D2D5D8;
+		}
+	}
+}
+
+.zero-bottom {
+	margin-bottom: 0px !important; 
+	padding-bottom: 0px !important;
+}
+
+.ui.input > input {
+	background-color: #fff;
+}
+
+
+.ui.floating.label {
+	position: absolute;
+	z-index: 100;
+	top: 1em;
+	right: 1.5em;
+}
+
+#no-borderline:before {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 1px;
+	background: none;
+}
+#right-borderline:before {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 1px;
+	background: none;
+}
+#right-borderline:after {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 1px;
+	background: rgba(255, 255, 255, 0.18);
+}
+.ui.menu .item:before {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 1px;
+	background: rgba(255, 255, 255, 0.18);
+}
+
+.clickable {
+	cursor: pointer;
+}

@@ -1,0 +1,72 @@
+.modal-container {
+  padding: 20px;
+}
+
+p {
+  margin: 0 0 3em;
+  line-height: 1.4285em;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.ui.primary.header {
+  color: #3f4395;
+}
+
+.ui.basic.segment {
+  padding: 0;
+}
+
+.ui.header>.icon {
+  float: right;
+  font-size: 1em;
+  margin: 0;
+}
+
+.ui.fluid.dropdown {
+  border-radius: 8px;
+}
+
+.add-filter {
+  gap: 15px;
+}
+
+.flex {
+  display: flex;
+}
+
+.row {
+  flex-direction: row;
+  gap:15px;
+  margin: 1.5rem;
+}
+
+.spacing {
+  gap: 16px;
+}
+
+.large-spacing {
+  gap: 22px;
+}
+
+.btns {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+
+  &>* {
+    margin: 0 !important;
+  }
+}
+
+.btns .ui.button {
+  min-width: 100px;
+  border-radius: 8px;
+}

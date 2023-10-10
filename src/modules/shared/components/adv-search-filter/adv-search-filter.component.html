@@ -1,0 +1,218 @@
+<!-- @format -->
+
+<div
+	class="panel ui grid two stackable column"
+	style="max-width: 100%; margin: 0"
+>
+	<div
+		class="column"
+		style="
+			width: 60%;
+			font-size: 16px;
+			padding: 10px 20px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		"
+	>
+		<!-- Search text field -->
+		<div class="icon-input">
+			<img src="assets/Icons/search.svg" alt="" />
+			<input
+				type="text"
+				placeholder="Search"
+				style="border: none"
+				[(ngModel)]="searchText"
+				(ngModelChange)="onSearchRecords($event)"
+			/>
+		</div>
+
+		<!-- Displayed records control -->
+		<span class="ui mini icon input">
+			<label
+				>Display
+				<sui-select
+					class="selection mini"
+					[(ngModel)]="filter.records"
+					style="min-width: 4px"
+					placeholder="10"
+					(ngModelChange)="onDisplayRecords($event)"
+				>
+					<sui-select-option value="2"></sui-select-option>
+					<sui-select-option value="10"></sui-select-option>
+					<sui-select-option value="20"></sui-select-option>
+					<sui-select-option value="50"></sui-select-option>
+					<sui-select-option value="100"></sui-select-option>
+				</sui-select>
+				Rows</label
+			>
+		</span>
+	</div>
+	<div
+		class="column"
+		style="
+			width: 40%;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			gap: 20px;
+		"
+	>
+		<!-- Cancel Filter -->
+		<button
+			*ngIf="showCancelBtn"
+			class="ui red mini button icon"
+			style="color: #fff"
+			(click)="cancelAdvanceSearch()"
+		>
+			<i class="ban icon" style="color: #fff"></i> Cancel Filter
+		</button>
+
+		<!-- Export Search -->
+		<div class="tooltip" *ngIf="showExportBtn">
+			<i class="external alternate icon link" (click)="export.emit()"></i>
+			<span class="tooltiptext">Export search results</span>
+		</div>
+
+		<!-- Date Paid -->
+		<div class="tooltip" *ngIf="datePaidSearch">
+			<i
+				class="calendar alternate outline icon link"
+				(click)="datePaidAd.emit()"
+			></i>
+			<span class="tooltiptext">Date Paid Search</span>
+		</div>
+
+		<!-- Advanced Search -->
+		<img
+			*ngIf="hasAdvancedSearch"
+			src="assets/Icons/settings-icon.svg"
+			(click)="onAdvanceSearch()"
+			suiPopup
+			popupText="Advanced Search"
+			popupPlacement="top"
+			[popupInverted]="true"
+			alt="Adv"
+		/>
+
+		<!-- Sort -->
+		<a
+			class="ui pointing dropdown"
+			suiDropdown
+			suiPopup
+			popupText="Sort"
+			popupPlacement="top"
+			[popupInverted]="true"
+		>
+			<img src="assets/Icons/sort.svg" alt="Adv" />
+			<div class="left menu" suiDropdownMenu>
+				<div class="item" (click)="onSortRecords('desc')">Desc</div>
+				<div class="item" (click)="onSortRecords('asc')">Asc</div>
+			</div>
+		</a>
+
+		<!-- Advanced Filter -->
+		<div
+			*ngIf="hasFilters"
+			class="ui pointing top right dropdown item"
+			suiDropdown
+			suiPopup
+			popupText="Advanced Filter"
+			popupPlacement="top"
+			[popupInverted]="true"
+		>
+			<img src="assets/Icons/filter.svg" alt="Adv" />
+			<div class="menu" suiDropdownMenu style="padding: 10px">
+				<div style="width: 250px">
+					<div class="ui grid" style="padding-bottom: 10px">
+						<div class="ten wide column">
+							<p>
+								<b>Filters</b>
+							</p>
+						</div>
+						<div class="six wide column right">
+							<p
+								(click)="cancelAdvanceSearch()"
+								style="color: #142656"
+							>
+								Reset filter
+							</p>
+						</div>
+					</div>
+					<sui-accordion
+						[closeOthers]="false"
+						*ngFor="let x of headerFilters; index as i"
+					>
+						<div
+							class="ui divider container"
+							style="padding: 0px; margin: 0px"
+						></div>
+						<sui-accordion-panel [isOpen]="i == 0">
+							<div title>
+								<i class="dropdown icon"></i>
+								{{ x.label }}
+							</div>
+							<div content>
+								<div
+									class="ui grid"
+									*ngFor="
+										let choice of x.choices;
+										index as in
+									"
+								>
+									<div
+										style="align-self: center"
+										class="two wide column"
+										[ngClass]="{
+											'zero-bottom':
+												in + 1 != x.choices.length
+										}"
+									>
+										<input
+											class="checkbox"
+											[checked]="
+												isChecked(choice, x.field)
+											"
+											name="read"
+											type="checkbox"
+											(change)="
+												singleSelect(
+													choice,
+													$event,
+													x.field
+												)
+											"
+										/>
+									</div>
+									<div
+										class="fourteen wide column"
+										[ngClass]="{
+											'zero-bottom':
+												in + 1 != x.choices.length
+										}"
+									>
+										<p>{{ choice.optionName }}</p>
+									</div>
+								</div>
+							</div>
+						</sui-accordion-panel>
+					</sui-accordion>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="ui grid">
+	<div class="three wide column" *ngFor="let item of selectedItems">
+		<span
+			class="ui mini label"
+			style="background-color: #f0f1f8; color: #142656"
+			(click)="removeSelectedItem(item)"
+		>
+			{{ item.label }}
+			<i style="padding-left: 15px; color: red" class="times icon"></i>
+		</span>
+	</div>
+</div>
