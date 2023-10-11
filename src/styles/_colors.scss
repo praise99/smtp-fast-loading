@@ -1,0 +1,160 @@
+// Base Colors
+$primary: #142656;
+$secondary: #CCCCCC;
+$success: #008060;
+$warning: #FFC453;
+$critical: #D82C0D;
+$interactive: #2E72D2;
+$highlight: #5BCDDA;
+
+// Background
+$background_default: #F6F6F7;
+$background_dovered: #F1F2F3;
+$background_pressed: #EDEEEF;
+$background_selected: #EDEEEF;
+
+// Surface
+$surface_default: #FFFFFF;
+$surface_subdued: #FCFCFC;
+$surface_hovered: #F6F6F7;
+$surface_pressed: #F1F2F3;
+$surface_depressed: #EDEEEF;
+$surface_disabled: #FAFBFB;
+
+// Surface Selected
+$surface_selected_default: #F2F7FE;
+$surface_selected_hovered: #EDF4FE;
+$surface_selected_pressed: #E5EFFD;
+
+// Surface Warning
+$surface_warning_default: #FFAC33;
+$surface_warning_subdued: #FFF5EA;
+$surface_warning_subdued_hovered: #FFF2E2;
+$surface_warning_subdued_pressed: #FFEBD3;
+
+// Surface Success
+$surface_success_default: #5FD3A4;
+$surface_success_subdued: #F1F8F5;
+$surface_success_subdued_hovered: #ECF6F1;
+$surface_success_subdued_pressed: #E2F1EA;
+
+// Surface Highlight
+$surface_highlight_default: #4CD2E6;
+$surface_highlight_subdued: #EBF9FC;
+$surface_highlight_subdued_hovered: #E4F7FA;
+$surface_highlight_subdued_pressed: #D5F3F8;
+
+// Surface Neutral
+$surface_neutral_default: #E4E5E7;
+$surface_neutral_subdued: #F6F6F7;
+$surface_neutral_hovered: #DBDDDF;
+$surface_neutral_pressed: #C9CCD0;
+$surface_neutral_disabled: #F1F2F3;
+
+// Surface Primary
+$surface_primary_default: #E0E0EB;
+$surface_primary_subdued1: #FBFBFF;
+$surface_primary_subdued2: #F0F1F8;
+$surface_primary_subdued3: #EAEFFB;
+
+// Surface Critical
+$surface_critical_default: #FB4037;
+$surface_critical_subdued: #FFF4F4;
+$surface_critical_subdued_hovered: #FFF0F0;
+$surface_critical_subdued_pressed: #FFE9E8;
+$surface_critical_subdued_depressed: #FEBCB9;
+
+// Surface Icon
+$surface_icon_default: #F0F1F8;
+
+// Text
+$text_default: #505050;
+$text_hovered: #3D3D3D;
+$text_subdued: #6D7175;
+$text_subdued2: #B7B7B7;
+$text_disabled: #8C9196;
+$text_critical: #D72C0D;
+$text_warning: #916A00;
+$text_success: #008060;
+$text_highlight: #347C84;
+$text_heading: #031F68;
+
+// Text On
+$text_on_interactive: #FFFFFF;
+$text_on_primary: #FFFFFF;
+$text_on_critical: #FFFFFF;
+
+// Icon
+$icon_default: #5C5F62;
+$icon_subdued: #86879D;
+$icon_hovered: #1A1C1D;
+$icon_pressed: #44474A;
+$icon_disabled: #BABEC3;
+$icon_critical: #D72C0D;
+$icon_warning: #B98900;
+$icon_success: #007F5F;
+$icon_highlight: #00A0AC;
+
+// Icon On
+$icon_on_interactive: #FFFFFF;
+$icon_on_primary: #FFFFFF;
+$icon_on_critical: #FFFFFF;
+
+// Interactive
+$interactive_default: #2C6ECB;
+$interactive_hovered: #1F5199;
+$interactive_depressed: #103262;
+$interactive_disabled: #BDC1CC;
+$interactive_critical: #D82C0D;
+$interactive_critical_hovered: #CD290C;
+$interactive_critical_depressed: #670F03;
+$interactive_critical_disabled: #FD938D;
+
+// Border
+$border_default: #8C9196;
+$border_subdued: #C9CCCF;
+$border_hovered: #999EA4;
+$border_depressed: #575959;
+$border_disabled: #D2D5D8;
+
+// Border Shadow
+$border_shadow_subdued: #BABFC4;
+
+// Border Critical
+$border_critical_default: #FD5749;
+$border_critical_subdued: #E0B3B2;
+$border_critical_disabled: #FFA7A3;
+
+// Border Success
+$border_success_default: #00A47C;
+$border_success_subdued: #95C9B4;
+
+// Border Highlight
+$border_highlight_default: #449DA7;
+$border_highlight_subdued: #98C6CD;
+
+// Focused
+$focused_default: #458FFF;
+$focused_default2: #4BBEFF;
+
+// Action Primary
+$action_primary_default: #142656;
+$action_primary_subdued: #5E62BA;
+$action_primary_hovered: #303473;
+$action_primary_pressed: #2A2D64;
+$action_primary_depressed: #1E2048;
+$action_primary_disabled: #F1F1F1;
+
+// Action Critical
+$action_critical_default: #D82C0D;
+$action_critical_hovered: #BC2200;
+$action_critical_pressed: #A21B00;
+$action_critical_depressed: #6C0F00;
+$action_critical_disabled: #F1F1F1;
+
+// Action Secondary
+$action_secondary_default: #FFFFFF;
+$action_secondary_hovered: #F6F6F7;
+$action_secondary_pressed: #F1F2F3;
+$action_secondary_depressed: #6D7175;
+$action_secondary_disabled: #FFFFFF;
