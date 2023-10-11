@@ -1,39 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/scss/modal.scss";
-$main-color:#142656;
-
+$main-color: #142656;
 
 @font-face {
-  font-family: 'roboto';
-  src: url(./assets/Fonts/Roboto/Roboto-Regular.ttf)
-    /* Additional font properties */
+  font-family: "roboto";
+  src: url(./assets/Fonts/Roboto/Roboto-Regular.ttf);
+  /* Additional font properties */
 }
 
 @font-face {
-  font-family: 'roboto-light';
-  src: url(./assets/Fonts/Roboto/Roboto-Light.ttf)
-    /* Additional font properties */
+  font-family: "roboto-light";
+  src: url(./assets/Fonts/Roboto/Roboto-Light.ttf);
+  /* Additional font properties */
 }
 
 * {
   padding: 0;
   box-sizing: border-box;
-  font-family: 'roboto';
+  font-family: "roboto";
   margin: 0;
-  border-radius: 0;
+  // border-radius: 0;
 }
 
 .ui.dimmer.modals {
   padding: 0;
 }
 
-.ui.grid>.column:not(.row) {
+.ui.grid > .column:not(.row) {
   min-width: 84px;
 }
 
-.table-cell .ui.dropdown>.menu.transition {
-  border: 1px solid #031F68;
+.table-cell .ui.dropdown > .menu.transition {
+  border: 1px solid #031f68;
   top: 75%;
   left: -75%;
 }
