@@ -11,7 +11,8 @@
     padding-top: 20px;
     background: $main-color;
     color: #fff;
-    height: 100%;
+    height: 100vh;
+    position: fixed;
     overflow-x: hidden;
     overflow-y: auto;
   }

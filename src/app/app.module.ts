@@ -14,6 +14,11 @@ import { AppLayoutComponent } from './components/layout/app-layout/app-layout.co
 import { PublicLayoutComponent } from './components/layout/public-layout/public-layout.component';
 import { PublicHeaderComponent } from './components/public-header/public-header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AuthenticationService } from './services/authentication.service';
+import { DashboardService } from './services/dashboard.service';
+import { EmailRequestService } from './services/email-request.service';
+import { ProfileService } from './services/profile.services';
+import { EmptyStateComponent } from './components/empty-state/empty-state.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     SidebarComponent,
     AppLayoutComponent,
     PublicHeaderComponent,
-    PublicLayoutComponent
+    PublicLayoutComponent,
+    EmptyStateComponent
 
   ],
   imports: [
@@ -36,7 +42,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     HttpClientModule,
     // SuiModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    DashboardService,
+    EmailRequestService,
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
