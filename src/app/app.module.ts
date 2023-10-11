@@ -8,14 +8,24 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { SuiModule } from '@richardlt/ng2-semantic-ui';
+import { HeaderComponent } from './components/header/header.component';
+import { AppLayoutComponent } from './components/layout/app-layout/app-layout.component';
+import { PublicLayoutComponent } from './components/layout/public-layout/public-layout.component';
 import { PublicHeaderComponent } from './components/public-header/public-header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    PublicHeaderComponent
+    HeaderComponent,
+    SidebarComponent,
+    AppLayoutComponent,
+    PublicHeaderComponent,
+    PublicLayoutComponent
+
   ],
   imports: [
     BrowserModule,
@@ -23,7 +33,8 @@ import { PublicHeaderComponent } from './components/public-header/public-header.
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // SuiModule
   ],
   providers: [],
   bootstrap: [AppComponent]
