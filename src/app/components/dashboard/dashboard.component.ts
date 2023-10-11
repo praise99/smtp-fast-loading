@@ -1,18 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import { ModalSize, SuiModalService } from '@richardlt/ng2-semantic-ui';
 // import { ViewEmailRequestModal } from '../../modals/view-email-request-modal/view-email-request-modal.component';
-import { DashboardService } from '../../services/dashboard.service';
 import { EmailRequestService } from 'src/app/services/email-request.service';
-
-/**
- * @author Tari
- * @dateCreated 2 Aug 2023
- * @description app-dashboard component class
- * @modifiedBy Tari
- * @dateModified 29 Aug 2023
- * @reasonForModification Create getStatusColor() method
- */
-
+import { DashboardService } from 'src/app/services/dashboard.services';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -27,6 +17,14 @@ export class DashboardComponent implements OnInit {
   dashboard: any;
   emailRequests: any;
 
+  cardArr: Array<string> = ['card 1', 'card 2', 'card 3', 'card 4',]
+  cardList = {
+    applications: 6,
+    emailRequests: 26,
+    unsubscribers: 3,
+    users: 11,
+  };
+
   currentPage: number = 1;
   maxSize: number = 4;
 
@@ -36,7 +34,7 @@ export class DashboardComponent implements OnInit {
     private emailRequestService: EmailRequestService) {}
 
   ngOnInit(): void {
-    this.getDashboardStatistics();
+    this.getDashboardData();
     this.getEmailRequest(1);
   }
 
@@ -58,7 +56,7 @@ export class DashboardComponent implements OnInit {
    * @dateCreated 2 Aug 2023
    * @description Makes an HTTP GET request to get dashboard statistics and updates the class 'dashboard' property.
    */
-  getDashboardStatistics() {
+  getDashboardData() {
     this.callStarted();
     this.dashboardService.getDashboardStatistics().subscribe({
       next: (res: any) => {
