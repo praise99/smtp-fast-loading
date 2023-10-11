@@ -38,24 +38,10 @@ export class DashboardComponent implements OnInit {
     this.getEmailRequest(1);
   }
 
-  /**
-   * @author Tari
-   * @dateCreated 2 Aug 2023
-   * @description Opens a modal window to view details of a selected email request
-   * @param request An object containing details of the selected email request
-   * @modifiedBy Tari
-   * @dateModified 22 Aug 2023
-   * @reasonForModification Pass email request details to modal
-   */
   viewEmailRequestModal(request: any) {
     // this.modalService.open(new ViewEmailRequestModal('View Email Request', request, ModalSize.Tiny))
   }
 
-  /**
-   * @author Tari
-   * @dateCreated 2 Aug 2023
-   * @description Makes an HTTP GET request to get dashboard statistics and updates the class 'dashboard' property.
-   */
   getDashboardData() {
     this.callStarted();
     this.dashboardService.getDashboardStatistics().subscribe({
@@ -71,12 +57,6 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  /**
-   * @author Tari
-   * @dateCreated 2 Aug 2023
-   * @description Makes an HTTP GET request to get email requests and updates the class 'emailRequest' property.
-   * @param page Retrieve records based on this page number
-   */
   getEmailRequest(page: number) {
     const params = {
       page: page,
@@ -97,41 +77,18 @@ export class DashboardComponent implements OnInit {
   })
   }
 
-  /**
-   * @author Tari
-   * @dateCreated 2 Aug 2023
-   * @description Adds boolean true to the pendingArr array
-   */
   callStarted() {
     this.pendingArr.push(true);
   }
 
-  /**
-   * @author Tari
-   * @dateCreated 2 Aug 2023
-   * @description Removes a value from the pendingArr array
-   */
   callCompleted() {
     this.pendingArr.pop();
   }
 
-  /**
-   * @author Tari
-   * @dateCreated 2 Aug 2023
-   * @description Gets the "page" of email requests
-   * @param page Retrieve records based on this page number
-   */
   nextPage(page: number) {
     this.getEmailRequest(page)
   }
 
-  /**
-   * @author Tari
-   * @dateCreated 29 Aug 2023
-   * @description Gets the color associated with a specific status
-   * @param status The status in question
-   * @returns The color associated with a specific status
-   */
   getStatusColor(status: string) {
     switch (status?.toLowerCase()) {
       case 'sent':

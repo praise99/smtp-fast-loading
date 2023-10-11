@@ -17,24 +17,23 @@
       </div>
       <div style="margin-bottom: 20px;"></div>
 
-
       <!-- Statistics Container -->
-      <div class="card-container">
-        <div class="ui inverted card segment">
-          <div class="title">USERS</div>
-          <h2 class="count">{{ dashboard?.users }}</h2>
+      <div class="content flex-card">
+        <div class="card primary dashboard-card">
+          <div class="card-header">USERS</div>
+          <h2 class="card-content">{{ dashboard?.users }}</h2>
         </div>
-        <div class="ui inverted card segment">
-          <div class="title">APPLICATIONS</div>
-          <h2 class="count">{{ dashboard?.applications }}</h2>
+        <div class="card primary dashboard-card">
+          <div class="card-header">APPLICATIONS</div>
+          <h2 class="card-content">{{ dashboard?.applications }}</h2>
         </div>
-        <div class="ui inverted card segment">
-          <div class="title">UNSUBSCRIBERS</div>
-          <h2 class="count">{{ dashboard?.unsubscribers }}</h2>
+        <div class="card primary dashboard-card">
+          <div class="card-header">UNSUBSCRIBERS</div>
+          <h2 class="card-content">{{ dashboard?.unsubscribers }}</h2>
         </div>
-        <div class="ui inverted card segment">
-          <div class="title">EMAIL REQUESTS</div>
-          <h2 class="count">{{ dashboard?.emailRequests }}</h2>
+        <div class="card primary dashboard-card">
+          <div class="card-header">EMAIL REQUESTS</div>
+          <h2 class="card-content">{{ dashboard?.emailRequests }}</h2>
         </div>
       </div>
 
