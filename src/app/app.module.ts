@@ -19,6 +19,7 @@ import { DashboardService } from './services/dashboard.service';
 import { EmailRequestService } from './services/email-request.service';
 import { ProfileService } from './services/profile.services';
 import { EmptyStateComponent } from './components/empty-state/empty-state.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { EmptyStateComponent } from './components/empty-state/empty-state.compon
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     // SuiModule
   ],
   providers: [
