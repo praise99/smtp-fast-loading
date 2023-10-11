@@ -1,1 +1,135 @@
-<p>dashboard works!</p>
+<div style="display: flex; flex: 1; overflow-y: hidden;">
+  <!-- <div style="width: 225px; height: 100%">
+    <app-sidebar></app-sidebar>
+  </div> -->
+  <div class="main">
+    <!-- <router-outlet></router-outlet> -->
+    <div class="ui vertical segment" [ngClass]="{ loading: pendingArr.length }">
+      <!-- Page Header -->
+      <h2 class="ui primary header">Dashboard</h2>
+      <div class="ui divider"></div>
+
+      <!-- Error message -->
+      <div class="attached warning" *ngIf="error">
+        <div class="header">
+          {{error | json}}
+        </div>
+      </div>
+      <div style="margin-bottom: 20px;"></div>
+
+
+      <!-- Statistics Container -->
+      <div class="card-container">
+        <div class="ui inverted card segment">
+          <div class="title">USERS</div>
+          <h2 class="count">{{ dashboard?.users }}</h2>
+        </div>
+        <div class="ui inverted card segment">
+          <div class="title">APPLICATIONS</div>
+          <h2 class="count">{{ dashboard?.applications }}</h2>
+        </div>
+        <div class="ui inverted card segment">
+          <div class="title">UNSUBSCRIBERS</div>
+          <h2 class="count">{{ dashboard?.unsubscribers }}</h2>
+        </div>
+        <div class="ui inverted card segment">
+          <div class="title">EMAIL REQUESTS</div>
+          <h2 class="count">{{ dashboard?.emailRequests }}</h2>
+        </div>
+      </div>
+
+      <h2 class="ui primary header" style="margin-top: 40px; margin-bottom: 10px">
+        Recent Email Requests
+      </h2>
+
+      <!-- Table -->
+      <div class="table-container">
+        <div class="separated esl-table">
+          <!-- header row -->
+          <div class="ui inverted segment header-row table-row">
+            <!-- table headers -->
+            <div class="first table-cell check-cell">
+              <!-- <sui-checkbox></sui-checkbox> -->
+            </div>
+            <div class="table-cell">Application</div>
+            <div class="table-cell">API Key</div>
+            <div class="table-cell">Title of Email</div>
+            <div class="table-cell">Sender Email</div>
+            <div class="table-cell">Reply Email</div>
+            <div class="table-cell">Status</div>
+            <!-- empty header for icons -->
+            <div class="last table-cell"></div>
+          </div>
+
+          <!-- table body -->
+          <ng-container *ngFor="let request of emailRequests">
+            <div class="table-row">
+              <!-- checkbox cell -->
+              <div class="check-cell table-cell first">
+                <!-- <sui-checkbox></sui-checkbox> -->
+              </div>
+              <!-- table cells -->
+              <div class="table-cell">{{ request?.apikey?.application?.applicationName }}</div>
+              <div class="table-cell">{{ request?.apikey?.name }}</div>
+              <div class="table-cell">{{ request?.title }}</div>
+              <div class="table-cell">{{ request?.apikey?.application?.senderEmail }}</div>
+              <div class="table-cell">{{ request?.apikey?.application?.replyEmail }}</div>
+              <div class="table-cell">
+                <div class="ui green label" [ngStyle]="{
+                'border-radius': '10px',
+                'padding': '4px 8px',
+                'font-weight': 400,
+                'background-color': getStatusColor(request?.status)
+              }">
+                  {{ request?.status }}
+                </div>
+              </div>
+              <!-- icon buttons -->
+              <!-- <div class="last table-cell icon-cell">
+                <img class="clickable" src="assets/Icons/eye.svg" suiPopup popupPlacement="top" popupInverted="true"
+                  popupText="View email request" (click)="viewEmailRequestModal(request)" />
+              </div> -->
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- No email requests -->
+      <div class="ui segment" *ngIf="!emailRequests?.length">
+        <app-empty-state [hasNegativeAction]="false" [hasPositiveAction]="false" [title]="'No Email Requests'"
+          description="" moreInfo=""></app-empty-state>
+      </div>
+
+      <!-- Pagination -->
+      <div class="ui vertical basic segment">
+        <div class="ui two column grid">
+          <div class="column middle aligned">
+            <div class="ui medium labeled button">
+              <div class="records-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10 1C13.866 1 17 2.79086 17 5C17 7.20914 13.866 9 10 9C6.13401 9 3 7.20914 3 5C3 2.79086 6.13401 1 10 1ZM15.694 9.13079C16.1576 8.86588 16.6044 8.54736 17 8.17775V10C17 12.2091 13.866 14 10 14C6.13401 14 3 12.2091 3 10V8.17775C3.3956 8.54736 3.84244 8.86588 4.30604 9.13079C5.83803 10.0062 7.85433 10.5 10 10.5C12.1457 10.5 14.162 10.0062 15.694 9.13079ZM3 13.1777V15C3 17.2091 6.13401 19 10 19C13.866 19 17 17.2091 17 15V13.1777C16.6044 13.5474 16.1576 13.8659 15.694 14.1308C14.162 15.0062 12.1457 15.5 10 15.5C7.85433 15.5 5.83803 15.0062 4.30604 14.1308C3.84244 13.8659 3.3956 13.5474 3 13.1777Z"
+                    fill="#86879D" />
+                </svg>
+              </div>
+              <a class="ui basic label records-text">{{ totalItems }} Record(s)</a>
+            </div>
+          </div>
+          <div class="column right aligned pagination menu" style="margin-left: auto">
+            <!-- <sui-pagination
+          class="small"
+          [collectionSize]="totalItems"
+          [pageSize]="rows"
+          [maxSize]="maxSize"
+          [hasEllipses]="false"
+          [page]="currentPage"
+          (pageChange)="nextPage($event)"
+        >
+        </sui-pagination> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
