@@ -1,0 +1,29 @@
+.content {
+  margin: 30px;
+}
+.flex-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: #031f68;
+  color: #fff;
+  border-radius: 4px;
+  flex: 0 0 20%;
+}
+
+.primary {
+  &.dashboard-card {
+    padding: 40px;
+
+    .card-header,
+    .card-content {
+      font-size: 32px;
+    }
+    .card-content {
+      text-align: right;
+      margin-top: 80px;
+    }
+  }
+}
