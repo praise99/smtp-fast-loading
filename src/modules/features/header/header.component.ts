@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthenticationService } from '../../../app/services/authentication.service';
 import { Router } from '@angular/router';
 // import { SuiModalService } from '@richardlt/ng2-semantic-ui';
 // import { UsersService } from 'src/app/services/users.service';

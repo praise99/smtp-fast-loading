@@ -8,23 +8,19 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { SuiModule } from '@richardlt/ng2-semantic-ui';
-import { HeaderComponent } from './components/header/header.component';
-import { AppLayoutComponent } from './components/layout/app-layout/app-layout.component';
-import { PublicLayoutComponent } from './components/layout/public-layout/public-layout.component';
-import { PublicHeaderComponent } from './components/public-header/public-header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AuthenticationService } from './services/authentication.service';
+import { DashboardService } from './services/dashboard.service';
+import { EmailRequestService } from './services/email-request.service';
+import { ProfileService } from './services/profile.services';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from 'src/modules/shared/shared.module';
+import { FeaturesModule } from 'src/modules/features/features.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    HeaderComponent,
-    SidebarComponent,
-    AppLayoutComponent,
-    PublicHeaderComponent,
-    PublicLayoutComponent
 
   ],
   imports: [
@@ -34,9 +30,17 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    FeaturesModule
     // SuiModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    DashboardService,
+    EmailRequestService,
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
