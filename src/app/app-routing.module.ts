@@ -8,7 +8,10 @@ import { AppLayoutComponent } from 'src/modules/features/layout/app-layout/app-l
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: PublicLayoutComponent },
-  { path: 'dashboard', component: AppLayoutComponent }
+  {
+    path: 'dashboard', component: AppLayoutComponent,
+
+  }
 ];
 
 @NgModule({
