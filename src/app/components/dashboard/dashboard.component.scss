@@ -35,33 +35,28 @@
   flex: 0 0 20%;
 }
 
-.primary {
-  &.dashboard-card {
-    padding: 40px;
+.dashboard-card {
+  padding: 40px;
 
-    .card-header {
-      font-size: 24px;
-      font-weight: 700;
+  .card-header {
+    font-size: 24px;
+    font-weight: 700;
+  }
 
-    }
+  .card-content {
+    font-size: 42px;
+    font-weight: 700;
+  }
 
-    .card-content {
-      font-size: 42px;
-      font-weight: 700;
-
-    }
-
-    .card-content {
-      text-align: right;
-      margin-top: 80px;
-    }
+  .card-content {
+    text-align: right;
+    margin-top: 45px;
   }
 }
 
-
 .records-icon {
   border-radius: 4px;
-  background-color: #F0F1F8;
+  background-color: #f0f1f8;
   padding: 4px;
   margin-right: 12px;
 }
@@ -69,11 +64,12 @@
 .ui.label.records-text {
   border: 1px solid;
   border-radius: 4px !important;
-  border: 1px solid #F0F1F8;
+  border: 1px solid #f0f1f8;
   color: #161616;
 
   /* shadow-card */
-  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25), 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25),
+    0px 2px 1px 0px rgba(0, 0, 0, 0.05);
 
   &:hover {
     color: #161616;
@@ -84,15 +80,12 @@
   cursor: pointer;
 }
 
-
-
-
 // TABLE STYLES ********************************
 $cell-border-radius: 8px;
 $default-cell-padding: 20px;
 $separated-cell-padding: 8px;
-$default-odd-row-color: #F6F6F7;
-$default2-header-row-color: #F6F6F7;
+$default-odd-row-color: #f6f6f7;
+$default2-header-row-color: #f6f6f7;
 
 .table-container {
   overflow: auto;
@@ -127,7 +120,7 @@ $default2-header-row-color: #F6F6F7;
     }
 
     .header-row.table-row {
-      background: #E4E4EB;
+      background: #e4e4eb;
 
       .table-cell {
         font-size: 13px;
@@ -149,7 +142,7 @@ $default2-header-row-color: #F6F6F7;
     border-spacing: 0 12px;
 
     .table-row {
-      background-color: #FFFFFF;
+      background-color: #ffffff;
     }
 
     .header-row {
@@ -163,22 +156,89 @@ $default2-header-row-color: #F6F6F7;
     .table-cell.first {
       border-top-left-radius: $cell-border-radius;
       border-bottom-left-radius: $cell-border-radius;
-      border-left: .5px solid rgba(0, 0, 0, 0.1);
+      border-left: 0.5px solid rgba(0, 0, 0, 0.1);
     }
 
     .table-cell.last {
       border-top-right-radius: $cell-border-radius;
       border-bottom-right-radius: $cell-border-radius;
-      border-right: .5px solid rgba(0, 0, 0, 0.1);
+      border-right: 0.5px solid rgba(0, 0, 0, 0.1);
     }
 
     .table-row:not(.header-row) {
-      background: #FFFFFF;
-      box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2), 0px 2px 10px rgba(0, 0, 0, 0.1);
+      background: #ffffff;
+      box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2),
+        0px 2px 10px rgba(0, 0, 0, 0.1);
     }
   }
 
   .hide {
     display: none !important;
+  }
+}
+
+::ng-deep .mat-mdc-checkbox {
+  &.header-checkbox {
+    .mdc-checkbox__background ,
+
+    // before check & on focus
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(
+      :indeterminate
+    )
+    ~ .mdc-checkbox__background,
+
+    // after check but on focus
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:focus:checked
+    ~ .mdc-checkbox__background {
+      border-color: #fff !important;
+      // background: #fff !important;
+      // color: #161616 !important;
+    }
+  }
+
+  .mdc-checkbox:hover
+    .mdc-checkbox__native-control:enabled:checked
+    ~ .mdc-checkbox__background,
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:checked
+    ~ .mdc-checkbox__background,
+
+    // before check & on focus
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(
+      :indeterminate
+    )
+    ~ .mdc-checkbox__background,
+
+    // after check but on focus
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:focus:checked
+    ~ .mdc-checkbox__background {
+    background: #031f68;
+    border-color: #031f68;
+  }
+
+  .mdc-checkbox:hover .mdc-checkbox__ripple,
+  .mdc-checkbox
+    .mdc-checkbox__native-control:focus:checked
+    ~ .mdc-checkbox__ripple {
+    background: transparent;
+  }
+
+  // header checkbox when not checked
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(
+      :indeterminate
+    )
+    ~ .mdc-checkbox__background {
+    background: #fff;
+  }
+}
+
+#eye-btn {
+  &:hover {
+    background: none;
   }
 }

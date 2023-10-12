@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $smtp-ssr2-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$smtp-ssr2-theme: mat.define-light-theme((
-  color: (
-    primary: $smtp-ssr2-primary,
-    accent: $smtp-ssr2-accent,
-    warn: $smtp-ssr2-warn,
+$smtp-ssr2-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $smtp-ssr2-primary,
+      accent: $smtp-ssr2-accent,
+      warn: $smtp-ssr2-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -72,5 +73,31 @@ $main-color: #142656;
   left: -75%;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+::ng-deep .mat-mdc-snack-bar-container {
+  border: 2px solid;
+  border-radius: 4px;
+  margin-top: 100px !important;
+  &.red-snackbar {
+    --mdc-snackbar-container-color: #fff;
+    --mat-mdc-snack-bar-button-color: #fb4037;
+    --mdc-snackbar-supporting-text-color: #fb4037;
+    border-color: #fb4037;
+  }
+
+  &.green-snackbar {
+    --mdc-snackbar-container-color: #fff;
+    --mat-mdc-snack-bar-button-color: #5fd3a4;
+    --mdc-snackbar-supporting-text-color: #5fd3a4;
+
+    border-color: #5fd3a4;
+  }
+}

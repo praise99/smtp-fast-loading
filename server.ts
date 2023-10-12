@@ -6,9 +6,11 @@ import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { AppServerModule } from './src/main.server';
+import 'localstorage-polyfill';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
+  global['localStorage'] = localStorage;
   const server = express();
   const distFolder = join(process.cwd(), 'dist/smtp-ssr2/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';

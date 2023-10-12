@@ -22,12 +22,10 @@ export class EmailRequestService {
    */
   constructor(private http: HttpClient) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
-    }),
-  };
+  httpOptions = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+  })
 
   /**
    * @author Tari
@@ -39,8 +37,8 @@ export class EmailRequestService {
    * @resonForModification Ability to send parameters like search etc
    * @dateModified 24th Aug 2023
    */
-  getEmailRequest(payload?: {params: any}) {
-  return this.http.get(this.apiServerUrl + "sent-emails/",this.httpOptions);
+  getEmailRequest(payload: any) {
+    return this.http.get(this.apiServerUrl + "sent-emails/", { params: payload.params, headers: this.httpOptions });
   }
 
 }
