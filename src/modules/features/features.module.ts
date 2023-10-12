@@ -6,6 +6,7 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { PublicLayoutComponent } from './layout/public-layout/public-layout.component';
 import { PublicHeaderComponent } from './public-header/public-header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MaterialModule } from 'src/app/material.module';
 
 
 
@@ -19,7 +20,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ],
   exports: [
     HeaderComponent,

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-public-header',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./public-header.component.scss']
 })
 export class PublicHeaderComponent {
+  @Input() isLoggedIn: boolean = false;
+  constructor(private authService: AuthenticationService) { }
+  loggedInUser = this.authService.getCurrentUser();
+  isToggled: boolean = false;
+  toggleDropdown() {
+    this.isToggled = !this.isToggled;
+    console.log('user ', this.loggedInUser)
+  }
 
+  resetPasswordModal() { }
+  logout() { }
 }

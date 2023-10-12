@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmptyStateComponent } from './empty-state/empty-state.component';
+import { MaterialModule } from 'src/app/material.module';
 
 
 
@@ -9,10 +10,12 @@ import { EmptyStateComponent } from './empty-state/empty-state.component';
     EmptyStateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
   ],
   exports: [
-    EmptyStateComponent
+    EmptyStateComponent,
+    MaterialModule,
   ]
 })
 export class SharedModule { }

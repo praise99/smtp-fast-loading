@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
   currentPage: number = 1;
   maxSize: number = 4;
   snackBarRef: any = '';
-  // dataSource: MatTableDataSource<any>;
   pageSlice: any;
 
   length = 50;
@@ -74,13 +73,10 @@ export class DashboardComponent implements OnInit {
       (error: any) => {
         this.callCompleted();
         this.error = error?.error?.message ? error.error.message : error;
-
-        // this.openSnackBar(error, 'error');
       })
   }
 
   getEmailRequest(page: number) {
-    console.log('snack ', this.snackBarRef, page)
 
     if (this.snackBarRef) {
       this.snackBarRef.dismiss();
@@ -92,18 +88,15 @@ export class DashboardComponent implements OnInit {
     this.callStarted();
     this.emailRequestService.getEmailRequest({ params: params }).subscribe({
       next: (res: any) => {
-        console.log('success ', res);
         this.emailRequests = res.data;
         this.totalItems = res?.totalRecords;
         this.currentPage = page;
 
         this.callCompleted();
-        // this.iterator();
       },
       error: (res: any) => {
 
         this.error = res?.message ? res.message : res;
-        console.log(this.error, 'error ', res);
 
         this.snackBarRef = this._snackBar.open(this.error, 'X', {
           // duration: 5000,
@@ -112,18 +105,10 @@ export class DashboardComponent implements OnInit {
           panelClass: ['red-snackbar']
         });
 
-        console.log('snack from err ', this.snackBarRef)
-
         this.callCompleted();
       }
     })
   }
-  /*private iterator() {
-    const end = (this.currentPage + 1) * this.rows;
-    const start = this.currentPage * this.rows;
-    const part = this.emailRequests.slice(start, end);
-    // this.dataSource = part;
-  }*/
 
   callStarted() {
     this.pendingArr.push(true);
@@ -134,10 +119,7 @@ export class DashboardComponent implements OnInit {
   }
 
   nextPage(event: PageEvent) {
-
     this.currentPage = event.pageIndex + 1;
-    // console.log('next page', event)
-
     this.getEmailRequest(event.pageIndex + 1)
   }
 

@@ -35,19 +35,20 @@ $smtp-ssr2-theme: mat.define-light-theme(
 @include mat.all-component-themes($smtp-ssr2-theme);
 
 /* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
 @import "./assets/scss/modal.scss";
 $main-color: #142656;
 
 @font-face {
   font-family: "roboto";
   src: url(./assets/Fonts/Roboto/Roboto-Regular.ttf);
+  font-display: swap;
   /* Additional font properties */
 }
 
 @font-face {
   font-family: "roboto-light";
   src: url(./assets/Fonts/Roboto/Roboto-Light.ttf);
+  font-display: swap;
   /* Additional font properties */
 }
 
@@ -82,7 +83,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-::ng-deep .mat-mdc-snack-bar-container {
+.mat-mdc-snack-bar-container {
   border: 2px solid;
   border-radius: 4px;
   margin-top: 100px !important;

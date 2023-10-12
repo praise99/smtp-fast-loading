@@ -1,3 +1,5 @@
+@import "/src/styles.scss";
+
 #container {
   height: 100vh;
   display: flex;
@@ -10,7 +12,8 @@
   overflow-y: auto !important;
   padding: 20px;
   background: white !important;
-  z-index: 1000;
+  // background: transparent;
+  // z-index: 1000;
 }
 
 .ui.primary.header {
@@ -177,63 +180,18 @@ $default2-header-row-color: #f6f6f7;
   }
 }
 
-::ng-deep .mat-mdc-checkbox {
+input[type="checkbox"] {
+  transform: scale(1.5);
+  vertical-align: middle;
+
+  &:not(.header-checkbox):checked {
+    accent-color: $main-color;
+  }
   &.header-checkbox {
-    .mdc-checkbox__background ,
-
-    // before check & on focus
-  .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(
-      :indeterminate
-    )
-    ~ .mdc-checkbox__background,
-
-    // after check but on focus
-  .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:focus:checked
-    ~ .mdc-checkbox__background {
-      border-color: #fff !important;
-      // background: #fff !important;
-      // color: #161616 !important;
+    &:checked {
+      color: $main-color;
+      accent-color: #fff;
     }
-  }
-
-  .mdc-checkbox:hover
-    .mdc-checkbox__native-control:enabled:checked
-    ~ .mdc-checkbox__background,
-  .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:checked
-    ~ .mdc-checkbox__background,
-
-    // before check & on focus
-  .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(
-      :indeterminate
-    )
-    ~ .mdc-checkbox__background,
-
-    // after check but on focus
-  .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:focus:checked
-    ~ .mdc-checkbox__background {
-    background: #031f68;
-    border-color: #031f68;
-  }
-
-  .mdc-checkbox:hover .mdc-checkbox__ripple,
-  .mdc-checkbox
-    .mdc-checkbox__native-control:focus:checked
-    ~ .mdc-checkbox__ripple {
-    background: transparent;
-  }
-
-  // header checkbox when not checked
-  .mdc-checkbox
-    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(
-      :indeterminate
-    )
-    ~ .mdc-checkbox__background {
-    background: #fff;
   }
 }
 

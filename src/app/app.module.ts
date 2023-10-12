@@ -15,11 +15,7 @@ import { ProfileService } from './services/profile.services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/modules/shared/shared.module';
 import { FeaturesModule } from 'src/modules/features/features.module';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MAT_SNACK_BAR_DATA, MatSnackBarModule, MatSnackBarRef } from '@angular/material/snack-bar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MaterialModule } from './material.module'; import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -38,13 +34,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     BrowserAnimationsModule,
     SharedModule,
     FeaturesModule,
-    MatPaginatorModule,
-    MatCheckboxModule,
-    MatSnackBarModule,
-    MatButtonModule,
-    MatTooltipModule,
     // SuiModule
   ],
+  // exports: [MaterialModule],
   providers: [
     AuthenticationService,
     DashboardService,
