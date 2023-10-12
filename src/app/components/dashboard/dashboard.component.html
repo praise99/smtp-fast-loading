@@ -9,12 +9,7 @@
       <h2 class="ui primary header">Dashboard</h2>
       <div class="ui divider"></div>
 
-      <!-- Error message -->
-      <div class="attached warning" *ngIf="error">
-        <div class="header">
-          {{error | json}}
-        </div>
-      </div>
+
       <div style="margin-bottom: 20px;"></div>
 
       <!-- Statistics Container -->
@@ -48,7 +43,7 @@
           <div class="ui inverted segment header-row table-row">
             <!-- table headers -->
             <div class="first table-cell check-cell">
-              <!-- <sui-checkbox></sui-checkbox> -->
+              <mat-checkbox class="header-checkbox"></mat-checkbox>
             </div>
             <div class="table-cell">Application</div>
             <div class="table-cell">API Key</div>
@@ -65,7 +60,7 @@
             <div class="table-row">
               <!-- checkbox cell -->
               <div class="check-cell table-cell first">
-                <!-- <sui-checkbox></sui-checkbox> -->
+                <mat-checkbox class="example-margin"></mat-checkbox>
               </div>
               <!-- table cells -->
               <div class="table-cell">{{ request?.apikey?.application?.applicationName }}</div>
@@ -84,10 +79,13 @@
                 </div>
               </div>
               <!-- icon buttons -->
-              <!-- <div class="last table-cell icon-cell">
-                <img class="clickable" src="assets/Icons/eye.svg" suiPopup popupPlacement="top" popupInverted="true"
-                  popupText="View email request" (click)="viewEmailRequestModal(request)" />
-              </div> -->
+              <div class="last table-cell icon-cell">
+                <button mat-button id="eye-btn">
+                  <img src="assets/Icons/eye.svg" matTooltip="Info about the action"
+                    aria-label="Button that displays a tooltip when focused or hovered over"
+                    popupText="View email request" (click)="viewEmailRequestModal(request)" />
+                </button>
+              </div>
             </div>
           </ng-container>
         </div>
@@ -125,6 +123,10 @@
           (pageChange)="nextPage($event)"
         >
         </sui-pagination> -->
+
+            <mat-paginator [length]="totalItems" [hidePageSize]="false" [pageSize]="rows" (page)="nextPage($event)"
+              aria-label="Select page">
+            </mat-paginator>
           </div>
         </div>
       </div>
