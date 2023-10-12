@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { ModalSize, SuiModalService } from '@richardlt/ng2-semantic-ui';
 // import { ViewEmailRequestModal } from '../../modals/view-email-request-modal/view-email-request-modal.component';
 import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PageEvent, } from '@angular/material/paginator';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -29,6 +30,23 @@ export class DashboardComponent implements OnInit {
   currentPage: number = 1;
   maxSize: number = 4;
   snackBarRef: any = '';
+  // dataSource: MatTableDataSource<any>;
+  pageSlice: any;
+
+  length = 50;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
+  hidePageSize = false;
+  showPageSizeOptions = true;
+  showFirstLastButtons = true;
+  disabled = false;
+
+  pageEvent!: PageEvent;
+  startIndex: any;
+  endIndex: any;
+
 
   constructor(
     // private modalService: SuiModalService,
@@ -62,23 +80,23 @@ export class DashboardComponent implements OnInit {
   }
 
   getEmailRequest(page: number) {
-    console.log('snack ', this.snackBarRef)
+    console.log('snack ', this.snackBarRef, page)
 
     if (this.snackBarRef) {
       this.snackBarRef.dismiss();
     }
-    // let errorSnackbar: any = inject(MatSnackBarRef);
     const params = {
       page: page,
       limit: this.rows
     }
     this.callStarted();
-    this.emailRequestService.getEmailRequest({ params }).subscribe({
+    this.emailRequestService.getEmailRequest({ params: params }).subscribe({
       next: (res: any) => {
         console.log('success ', res);
         this.emailRequests = res.data;
         this.totalItems = res?.totalRecords;
         this.currentPage = page;
+
         this.callCompleted();
         // this.iterator();
       },
@@ -115,12 +133,12 @@ export class DashboardComponent implements OnInit {
     this.pendingArr.pop();
   }
 
-  nextPage(page: any) {
-    console.log('next page')
+  nextPage(event: PageEvent) {
 
-    this.currentPage = page;
-    // this.params.page = page;
-    this.getEmailRequest(page)
+    this.currentPage = event.pageIndex + 1;
+    // console.log('next page', event)
+
+    this.getEmailRequest(event.pageIndex + 1)
   }
 
   getStatusColor(status: string) {
@@ -135,4 +153,5 @@ export class DashboardComponent implements OnInit {
         return '#E4E5E7'
     }
   }
+
 }

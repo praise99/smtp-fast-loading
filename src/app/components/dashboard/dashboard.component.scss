@@ -35,24 +35,22 @@
   flex: 0 0 20%;
 }
 
-.primary {
-  &.dashboard-card {
-    padding: 40px;
+.dashboard-card {
+  padding: 40px;
 
-    .card-header {
-      font-size: 24px;
-      font-weight: 700;
-    }
+  .card-header {
+    font-size: 24px;
+    font-weight: 700;
+  }
 
-    .card-content {
-      font-size: 42px;
-      font-weight: 700;
-    }
+  .card-content {
+    font-size: 42px;
+    font-weight: 700;
+  }
 
-    .card-content {
-      text-align: right;
-      margin-top: 80px;
-    }
+  .card-content {
+    text-align: right;
+    margin-top: 45px;
   }
 }
 
@@ -181,9 +179,22 @@ $default2-header-row-color: #f6f6f7;
 
 ::ng-deep .mat-mdc-checkbox {
   &.header-checkbox {
-    .mdc-checkbox__background {
+    .mdc-checkbox__background ,
+
+    // before check & on focus
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:focus:focus:not(:checked):not(
+      :indeterminate
+    )
+    ~ .mdc-checkbox__background,
+
+    // after check but on focus
+  .mdc-checkbox
+    .mdc-checkbox__native-control:enabled:focus:checked
+    ~ .mdc-checkbox__background {
       border-color: #fff !important;
       // background: #fff !important;
+      // color: #161616 !important;
     }
   }
 

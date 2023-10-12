@@ -14,19 +14,19 @@
 
       <!-- Statistics Container -->
       <div class="content flex-card">
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">USERS</div>
           <h2 class="card-content">{{ dashboard?.users }}</h2>
         </div>
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">APPLICATIONS</div>
           <h2 class="card-content">{{ dashboard?.applications }}</h2>
         </div>
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">UNSUBSCRIBERS</div>
           <h2 class="card-content">{{ dashboard?.unsubscribers }}</h2>
         </div>
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">EMAIL REQUESTS</div>
           <h2 class="card-content">{{ dashboard?.emailRequests }}</h2>
         </div>
@@ -78,12 +78,12 @@
                   {{ request?.status }}
                 </div>
               </div>
-              <!-- icon buttons -->
+
               <div class="last table-cell icon-cell">
                 <button mat-button id="eye-btn">
-                  <img src="assets/Icons/eye.svg" matTooltip="Info about the action"
+                  <img src="assets/Icons/eye.svg" matTooltip="View email request"
                     aria-label="Button that displays a tooltip when focused or hovered over"
-                    popupText="View email request" (click)="viewEmailRequestModal(request)" />
+                    (click)="viewEmailRequestModal(request)" />
                 </button>
               </div>
             </div>
@@ -113,20 +113,10 @@
             </div>
           </div>
           <div class="column right aligned pagination menu" style="margin-left: auto">
-            <!-- <sui-pagination
-          class="small"
-          [collectionSize]="totalItems"
-          [pageSize]="rows"
-          [maxSize]="maxSize"
-          [hasEllipses]="false"
-          [page]="currentPage"
-          (pageChange)="nextPage($event)"
-        >
-        </sui-pagination> -->
-
-            <mat-paginator [length]="totalItems" [hidePageSize]="false" [pageSize]="rows" (page)="nextPage($event)"
-              aria-label="Select page">
+            <mat-paginator [length]="totalItems" [showFirstLastButtons]="showFirstLastButtons" [pageSize]="rows"
+              [hidePageSize]="true" [pageSizeOptions]="[3,5,10]" (page)="nextPage($event)" aria-label="Select page">
             </mat-paginator>
+
           </div>
         </div>
       </div>
