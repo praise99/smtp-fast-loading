@@ -1,176 +1,116 @@
 <!-- @format -->
+<div class="toolbar" paddingY="0" paddingX='10' appPadding>
+  <div style="display: flex; align-items: center;" class="item header" id="no-borderline">
+    <img class="ui image logo" src="./../../../../assets/Images/logo (2).svg"
+      style="width: 70%; height: fit-content;" />
+    <div class="logo-name">
+      <p>SMTP API Manangement System</p>
+    </div>
+  </div>
 
-<div class="ui menu toolbar" paddingY="0" paddingX="10" appPadding>
-	<div
-		style="position: relative; left: 1rem"
-		class="item header"
-		id="no-borderline"
-	>
-		<img
-			class="ui image logo"
-			src="./../../../../assets/Images/logo (2).svg"
-			style="width: 70%"
-		/>
-		<div class="logo-name">
-			<p>SMTP API Manangement System</p>
-		</div>
-	</div>
-	<div class="right menu">
-		<!-- <div id="submenudrop " class="ui pointing top right dropdown item" suiDropdown>
-      <div style="
-          margin: -5rem 0;
-          padding: 1rem 0.7rem;
-          border-right: 1px solid #fff;
-          border-left: 1px solid #fff;
-        " class="notification" routerLink="/admin/dashboard/notifications">
-        <svg style="position: relative; left: 0.6rem" width="20" height="20" viewBox="0 0 19 20" fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M6.1015 17.8667C6.65659 19.1216 7.91282 19.9999 9.37097 19.9999C10.8291 19.9999 12.0853 19.1216 12.6404 17.8667H6.1015Z"
-            fill="white" />
-          <path
-            d="M18.0299 16.4789H0.712227C0.3846 16.4789 0.084498 16.258 0.0163541 15.9375C-0.051096 15.6201 0.0935191 15.3069 0.386913 15.1714C0.456537 15.1262 0.980594 14.7598 1.50525 13.6511C2.46884 11.6151 2.6711 8.74713 2.6711 6.69967C2.6711 3.00541 5.67661 0 9.37081 0C13.0563 0 16.0562 2.99093 16.0705 6.67306C16.0708 6.6819 16.071 6.69078 16.071 6.69967C16.071 8.74713 16.2732 11.6151 17.2368 13.6511C17.7615 14.7598 18.2855 15.1263 18.3552 15.1714C18.6486 15.3069 18.7932 15.6201 18.7257 15.9375C18.6576 16.2579 18.3575 16.4789 18.0299 16.4789ZM18.3629 15.1763H18.3634H18.3629Z"
-            fill="white" />
-        </svg>
+  <div class="dropdown">
+    <div class="dropbtn">
+      <div style="border-left: 1px solid #fff; padding: 0 0.9rem" class="name">
+        <p style="text-transform: capitalize">
+          {{ loggedInUser?.firstName }}
+          {{ loggedInUser?.lastName }}
+        </p>
+        <p style="font-style: italic">
+          {{ loggedInUser?.role.roleName }}
+        </p>
+      </div>
+      <img style="
+          					width: 35px;
+          					height: 35px;
+          					border-radius: 50%;
+          					object-fit: cover;
+          				" src="{{ loggedInUser?.image }}" alt="profile photo" />
+      <i style="color: #fff" class="angle down icon" (click)="toggleDropdown()"></i>
+
+    </div>
+
+    <div id="user" class="dropdown-content" *ngIf="isToggled">
+
+      <div>
+        <div class="ui grid">
+          <div class="five wide column">
+            <div class="ui basic fill segment">
+              <img style="
+    									position: relative;
+    									left: 1.2rem;
+    									top: 0.9rem;
+    									border-radius: 50%;
+    									width: 72px;
+    									height: 72px;
+    								" height="100px" width="100px" class="ui circular image" src="{{ loggedInUser?.image }}"
+                alt="user profile photo" />
+            </div>
+          </div>
+          <div class="eleven wide column">
+            <div class="ui basic fill segment">
+              <div style="padding-bottom: 10px">
+                <strong style="text-transform: capitalize">{{ loggedInUser?.firstName }}
+                  {{ loggedInUser?.lastName }}</strong>
+              </div>
+              <div style="padding-bottom: 5px">
+                {{ loggedInUser?.role.roleName }}
+              </div>
+              <div style="
+    									padding-bottom: 10px;
+    									color: #aeaeae;
+    									white-space: pre-line;
+    								">
+                {{ loggedInUser?.email }}
+              </div>
+              <a style="
+    									border-radius: 0.25rem;
+    									width: 14.125rem;
+    									color: #fff;
+    									padding: 0.7rem 0rem;
+    									height: 32px;
+    									font-weight: 400;
+    									font-size: 0.9rem;
+    									background-color: #142656;
+    								" class="ui mini button" routerLink="/admin/settings/manage-profile">My Profile</a>
+            </div>
+          </div>
+        </div>
         <div style="
-            position: relative;
-            bottom: 3rem;
-            right: 1.1rem;
-            height: 5px;
-            width: 5px;
-          " class="floating ui red label mini circular">
-          4
+    							background: #f0f1f8 !important;
+    							width: 26.5rem;
+    							position: relative;
+    							padding-left: 10px;
+    							margin-top: 10px;
+    						" class="buttons">
+          <div class="btn">
+            <button style="
+    									color: #142656;
+    									font-weight: 500;
+    									margin: 1rem 0.2rem;
+    									border: none;
+    									position: relative;
+    									top: 0.5rem;
+    									height: 1rem;
+    									cursor: pointer;
+    								" (click)="resetPasswordModal()">
+              Change password
+            </button>
+            <hr style="margin: 10px 5px" />
+            <button style="
+    									color: #142656;
+    									font-weight: 500;
+    									margin: 1rem 0.2rem;
+    									position: relative;
+    									bottom: 0.5rem;
+    									height: 1rem;
+    									cursor: pointer;
+    									border: none;
+    								" (click)="logout()">
+              Sign out
+            </button>
+          </div>
         </div>
       </div>
-    </div> -->
-		<div id="user" class="ui pointing top right dropdown item" suiDropdown>
-			<div
-				style="border-left: 1px solid #fff; padding: 0 0.9rem"
-				class="name"
-			>
-				<p style="text-transform: capitalize">
-					{{ currentlyLoggedInUser.firstName }}
-					{{ currentlyLoggedInUser.lastName }}
-				</p>
-				<p style="font-style: italic">
-					{{ currentlyLoggedInUser.role.roleName }}
-				</p>
-			</div>
-			<img
-				style="
-					width: 35px;
-					height: 35px;
-					border-radius: 50%;
-					object-fit: cover;
-				"
-				src="{{ currentlyLoggedInUser.image }}"
-				alt="profile photo"
-			/>
-			<i style="color: #fff" class="dropdown icon"></i>
-			<div class="menu" suiDropdownMenu>
-				<div class="ui grid" style="width: 400px">
-					<div class="five wide column">
-						<div class="ui basic fill segment">
-							<img
-								style="
-									position: relative;
-									left: 1.2rem;
-									top: 0.9rem;
-									border-radius: 50%;
-									width: 72px;
-									height: 72px;
-								"
-								height="100px"
-								width="100px"
-								class="ui circular image"
-								src="{{ currentlyLoggedInUser.image }}"
-								alt="user profile photo"
-							/>
-						</div>
-					</div>
-					<div class="eleven wide column">
-						<div class="ui basic fill segment">
-							<div style="padding-bottom: 10px">
-								<strong style="text-transform: capitalize"
-									>{{ currentlyLoggedInUser.firstName }}
-									{{ currentlyLoggedInUser.lastName }}</strong
-								>
-							</div>
-							<div style="padding-bottom: 5px">
-								{{ currentlyLoggedInUser.role.roleName }}
-							</div>
-							<div
-								style="
-									padding-bottom: 10px;
-									color: #aeaeae;
-									white-space: pre-line;
-								"
-							>
-								{{ currentlyLoggedInUser.email }}
-							</div>
-							<a
-								style="
-									border-radius: 0.25rem;
-									width: 14.125rem;
-									color: #fff;
-									padding: 0.7rem 0rem;
-									height: 32px;
-									font-weight: 400;
-									font-size: 0.9rem;
-									background-color: #142656;
-								"
-								class="ui mini button"
-								routerLink="/admin/settings/manage-profile"
-								>My Profile</a
-							>
-						</div>
-					</div>
-					<div
-						style="
-							background: #f0f1f8 !important;
-							width: 26.5rem;
-							position: relative;
-							left: 1rem;
-							bottom: 1rem;
-						"
-						class="buttons"
-					>
-						<div class="btn">
-							<button
-								style="
-									color: #142656;
-									font-weight: 500;
-									margin: 1rem 0.2rem;
-									border: none;
-									position: relative;
-									top: 0.5rem;
-									height: 1rem;
-									cursor: pointer;
-								"
-								(click)="resetPasswordModal()"
-							>
-								Change password
-							</button>
-							<hr style="margin: 10px 5px" />
-							<button
-								style="
-									color: #142656;
-									font-weight: 500;
-									margin: 1rem 0.2rem;
-									position: relative;
-									bottom: 0.5rem;
-									height: 1rem;
-									cursor: pointer;
-									border: none;
-								"
-								(click)="logout()"
-							>
-								Sign out
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    </div>
+  </div>
 </div>

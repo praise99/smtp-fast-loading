@@ -6,6 +6,10 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { PublicLayoutComponent } from './layout/public-layout/public-layout.component';
 import { PublicHeaderComponent } from './public-header/public-header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MaterialModule } from 'src/app/material.module';
+import { LoginComponent } from '../../app/components/login/login.component';
+import { SharedModule } from '../shared/shared.module';
+import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 
 
 
@@ -15,11 +19,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     PublicHeaderComponent,
     AppLayoutComponent,
     PublicLayoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   exports: [
     HeaderComponent,
