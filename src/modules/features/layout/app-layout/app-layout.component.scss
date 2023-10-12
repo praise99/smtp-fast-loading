@@ -1,12 +1,18 @@
+@import "/src/styles.scss";
+
 #container {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	overflow-y: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
 }
 
 .main {
-	flex: 1;
-	overflow-y: auto !important;
-	padding: 20px;
+  flex: 1;
+  overflow-y: auto !important;
+  padding: 20px;
+}
+
+.side-bar {
+  background: $main-color;
 }

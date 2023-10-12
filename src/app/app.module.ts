@@ -20,8 +20,8 @@ import { MaterialModule } from './material.module'; import { MatToolbarModule } 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    DashboardComponent,
+    // LoginComponent,
+    // DashboardComponent,
 
   ],
   imports: [

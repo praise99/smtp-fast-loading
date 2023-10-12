@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 // import { ViewEmailRequestModal } from '../../modals/view-email-request-modal/view-email-request-modal.component';
 import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { PageEvent, } from '@angular/material/paginator';
 @Component({
   selector: 'app-dashboard',
@@ -29,7 +28,6 @@ export class DashboardComponent implements OnInit {
 
   currentPage: number = 1;
   maxSize: number = 4;
-  snackBarRef: any = '';
   pageSlice: any;
 
   length = 50;
@@ -50,8 +48,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     // private modalService: SuiModalService,
     private dashboardService: DashboardService,
-    private emailRequestService: EmailRequestService,
-    private _snackBar: MatSnackBar,) { }
+    private emailRequestService: EmailRequestService,) { }
 
   ngOnInit(): void {
     this.getDashboardData();
@@ -77,10 +74,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getEmailRequest(page: number) {
-
-    if (this.snackBarRef) {
-      this.snackBarRef.dismiss();
-    }
     const params = {
       page: page,
       limit: this.rows
@@ -95,16 +88,7 @@ export class DashboardComponent implements OnInit {
         this.callCompleted();
       },
       error: (res: any) => {
-
         this.error = res?.message ? res.message : res;
-
-        this.snackBarRef = this._snackBar.open(this.error, 'X', {
-          // duration: 5000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center',
-          panelClass: ['red-snackbar']
-        });
-
         this.callCompleted();
       }
     })
