@@ -18,11 +18,6 @@ interface IViewEmailRequestModalContext {
   selector: 'app-view-email-request-modal',
   templateUrl: './view-email-request-modal.component.html',
   styleUrls: ['./view-email-request-modal.component.scss'],
-  animations: [
-    style({ transform: 'translateX(100%)' }), // Initial position
-    animate('30ms ease-in-out', style({ transform: 'translateX(0%)' })), // Final position
-
-  ]
 })
 export class ViewEmailRequestModalComponent implements OnInit, OnDestroy {
   pending!: boolean;

@@ -5,6 +5,7 @@ import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent, } from '@angular/material/paginator';
+import { NgDialogAnimationService } from 'ng-dialog-animation';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,8 +53,8 @@ export class DashboardComponent implements OnInit {
     private matDialog: MatDialog,
     private dashboardService: DashboardService,
     private emailRequestService: EmailRequestService,
-    public dialog: MatDialog,
-    public dialogRef: MatDialogRef<ViewEmailRequestModalComponent>) {}
+    public dialog: NgDialogAnimationService,
+   ) {}
 
   ngOnInit(): void {
 
@@ -64,9 +65,13 @@ export class DashboardComponent implements OnInit {
 
   viewEmailRequestModal(request: any) {
 
-    this.matDialog.open(ViewEmailRequestModalComponent,{
-      width: '540px',
+    this.dialog.open(ViewEmailRequestModalComponent,{
+      width: "540px",
       data: request,
+      animation: { to: "left" },
+      position: { rowEnd: "0" },
+      enterAnimationDuration: 0,
+      exitAnimationDuration: 3
     })
     // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
     //   data: { name: this.name, animal: this.animal },
