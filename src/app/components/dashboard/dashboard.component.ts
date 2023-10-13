@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, share } from 'rxjs/operators';
 import { DrawerService } from 'src/app/services/drawer.service';
+import { PageEvent, } from '@angular/material/paginator';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,7 +22,7 @@ export class DashboardComponent implements OnInit {
   success: any;
   error: any;
   totalItems: number = 0;
-  rows: number = 5  ;
+  rows: number = 5;
   dashboard: any;
   emailRequests: any;
 
@@ -35,6 +36,22 @@ export class DashboardComponent implements OnInit {
 
   currentPage: number = 1;
   maxSize: number = 4;
+  pageSlice: any;
+
+  length = 50;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
+  hidePageSize = false;
+  showPageSizeOptions = true;
+  showFirstLastButtons = true;
+  disabled = false;
+
+  pageEvent!: PageEvent;
+  startIndex: any;
+  endIndex: any;
+
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -71,6 +88,7 @@ export class DashboardComponent implements OnInit {
     this.getEmailRequest(1);
   }
 
+
   viewEmailRequestModal(request: any) {
 
     this.matDialog.open(ViewEmailRequestModalComponent,{
@@ -89,17 +107,15 @@ export class DashboardComponent implements OnInit {
 
   getDashboardData() {
     this.callStarted();
-    this.dashboardService.getDashboardStatistics().subscribe({
-      next: (res: any) => {
-        this.dashboard = res;
-        this.error = null;
-        this.callCompleted();
-      },
-      error: (error: any) => {
+    this.dashboardService.getDashboardStatistics().subscribe((res: any) => {
+      this.dashboard = res;
+      this.error = null;
+      this.callCompleted();
+    },
+      (error: any) => {
         this.callCompleted();
         this.error = error?.error?.message ? error.error.message : error;
-      }
-    })
+      })
   }
 
   getEmailRequest(page: number) {
@@ -108,18 +124,19 @@ export class DashboardComponent implements OnInit {
       limit: this.rows
     }
     this.callStarted();
-    this.emailRequestService.getEmailRequest({params}).subscribe({
+    this.emailRequestService.getEmailRequest({ params: params }).subscribe({
       next: (res: any) => {
-        console.log(res);
         this.emailRequests = res.data;
         this.totalItems = res?.totalRecords;
+        this.currentPage = page;
+
         this.callCompleted();
       },
       error: (res: any) => {
-        console.log(res);
+        this.error = res?.message ? res.message : res;
         this.callCompleted();
       }
-  })
+    })
   }
 
   callStarted() {
@@ -130,8 +147,9 @@ export class DashboardComponent implements OnInit {
     this.pendingArr.pop();
   }
 
-  nextPage(page: number) {
-    this.getEmailRequest(page)
+  nextPage(event: PageEvent) {
+    this.currentPage = event.pageIndex + 1;
+    this.getEmailRequest(event.pageIndex + 1)
   }
 
   getStatusColor(status: string) {
@@ -146,4 +164,5 @@ export class DashboardComponent implements OnInit {
         return '#E4E5E7'
     }
   }
+
 }

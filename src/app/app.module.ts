@@ -18,7 +18,7 @@ import { FeaturesModule } from 'src/modules/features/features.module';
 import { AuthGuard } from './components/guards/auth.guard';
 import { AuthenticationInterceptor } from './components/interceptors/authentication.interceptor';
 import { RedirectInterceptor } from './components/interceptors/redirect.interceptor';
-
+import { MaterialModule } from './material.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,9 +28,11 @@ import { DrawerService } from './services/drawer.service';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    DashboardComponent,
+    // LoginComponent,
+    // DashboardComponent,
     ViewEmailRequestModalComponent
+    // LoginComponent,
+    // DashboardComponent,
 
   ],
   imports: [
@@ -43,12 +45,10 @@ import { DrawerService } from './services/drawer.service';
     BrowserAnimationsModule,
     SharedModule,
     FeaturesModule,
-    MatDialogModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatToolbarModule
+
     // SuiModule
   ],
+  // exports: [MaterialModule],
   providers: [
     AuthenticationService,
     DashboardService,

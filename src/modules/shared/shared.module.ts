@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmptyStateComponent } from './empty-state/empty-state.component';
+import { MaterialModule } from 'src/app/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,10 +11,16 @@ import { EmptyStateComponent } from './empty-state/empty-state.component';
     EmptyStateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
   ],
   exports: [
-    EmptyStateComponent
+    EmptyStateComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
   ]
 })
 export class SharedModule { }
