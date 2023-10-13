@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // import { ModalSize, SuiModalService } from '@richardlt/ng2-semantic-ui';
-// import { ViewEmailRequestModal } from '../../modals/view-email-request-modal/view-email-request-modal.component';
+import { ViewEmailRequestModalComponent } from '../modals/view-email-request-modal/view-email-request-modal.component';
 import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSidenav } from '@angular/material/sidenav';
+
+
+import { Observable } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map, share } from 'rxjs/operators';
+import { DrawerService } from 'src/app/services/drawer.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -29,17 +37,54 @@ export class DashboardComponent implements OnInit {
   maxSize: number = 4;
 
   constructor(
-    // private modalService: SuiModalService,
+    private breakpointObserver: BreakpointObserver,
+    private drawerService: DrawerService,
+    private matDialog: MatDialog,
     private dashboardService: DashboardService,
-    private emailRequestService: EmailRequestService) {}
+    private emailRequestService: EmailRequestService,
+    public dialog: MatDialog) {}
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map((result) => result.matches),
+      share()
+    );
+
+  isSidenavOpen = false;
+
+  toggleSidenav() {
+    this.isSidenavOpen = !this.isSidenavOpen;
+  }
+
+  @ViewChild('sidenav') sidenav!: MatSidenav;
 
   ngOnInit(): void {
+    // Open the sidenav when the component initializes
+    // this.sidenav.open();
+
+    this.drawerService.drawerToggleSubject.subscribe(() => {
+      // this.sidenav.toggle();
+    });
+
     this.getDashboardData();
     this.getEmailRequest(1);
   }
 
   viewEmailRequestModal(request: any) {
-    // this.modalService.open(new ViewEmailRequestModal('View Email Request', request, ModalSize.Tiny))
+
+    this.matDialog.open(ViewEmailRequestModalComponent,{
+      width: '540px',
+      data: request
+    })
+    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    //   data: { name: this.name, animal: this.animal },
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   }
 
   getDashboardData() {

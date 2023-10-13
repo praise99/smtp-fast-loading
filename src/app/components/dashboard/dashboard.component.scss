@@ -11,6 +11,8 @@
   padding: 20px;
   background: white !important;
   z-index: 1000;
+  overflow: scroll;
+  min-width: 1440px;
 }
 
 .ui.primary.header {

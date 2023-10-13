@@ -7,7 +7,8 @@
 
 :host {
   #sidebar {
-    width: 500px;
+    // width: 500px !important;
+    width: 225px !important;
     padding-top: 20px;
     background: $main-color;
     color: #fff;
@@ -18,16 +19,16 @@
   }
 
   .ui.secondary.vertical.pointing.menu .item {
-		color: #fff;
-		padding-left: 3em;
-		margin-bottom: .5em;
-		cursor: pointer;
-		// svg {
-		// 	path {
-		// 		fill: #fff;
-		// 	}
-		// }
-	}
+    color: #fff;
+    padding-left: 3em;
+    margin-bottom: .5em;
+    cursor: pointer;
+    // svg {
+    // 	path {
+    // 		fill: #fff;
+    // 	}
+    // }
+  }
 
   #group.menu {
     margin-top: -25px;
@@ -45,16 +46,18 @@
   }
 
   .ui.secondary.vertical.pointing.menu .active.item {
-		color:#005de0 ;
-		border-color: #005de0;
+    color: #005de0;
+    border-color: #005de0;
 
-		border-right-width: 5px;
-		svg {
-			path {
-				fill: #005de0;
-			}
-		}
-	}
+    border-right-width: 5px;
+
+    svg {
+      path {
+        fill: #005de0;
+      }
+    }
+  }
+
   .navmenu-icon {
 
     stroke: white;
@@ -95,6 +98,3 @@ div.header {
     width: 1.5em;
   }
 }
-
-
-

@@ -1,0 +1,92 @@
+<div class="modal-container">
+  <h3 class="ui primary header" style="font-size: 18px;">
+   {{ 'View Email Request' }}
+
+      <mat-icon style="float: right; margin: 5px; cursor: pointer;" matDialogClose>close</mat-icon>
+
+   <!-- <div class="ui vertical basic segment" *ngIf="success || error" appMargin marginB="10px">
+    <sui-message class="success" *ngIf="success">
+      <div class="header">
+        {{ success }}
+      </div>
+    </sui-message>
+    <sui-message class="warning" *ngIf="error">
+      <div class="header">
+        {{ error | json }}
+      </div>
+    </sui-message>
+  </div> -->
+
+  </h3><div class="content">
+   <div class="scroll-wrapper ui basic segment" [ngClass]="{ loading: pending }">
+     <div class="data-field">
+       <div class="ui small header">Application Name</div>
+       <div class="data-text">{{data?.apikey?.application?.applicationName}}</div>
+     </div>
+
+     <div class="data-field">
+       <div class="ui small header">Organization Name</div>
+       <div class="data-text">
+         {{data?.apikey?.application?.organization?.organizationName}}
+       </div>
+     </div>
+
+     <div class="data-field">
+       <div class="ui small header">Api Key</div>
+       <div class="data-text">{{data?.apikey?.name}}</div>
+     </div>
+
+     <div class="data-field">
+       <div class="ui small header">Recipient Email</div>
+       <div class="data-text">{{data?.receipients | json}}</div>
+     </div>
+
+     <div class="data-field">
+       <div class="ui small header">Title of Email</div>
+       <div class="data-text">
+         {{data?.title}}
+       </div>
+     </div>
+     <div class="data-field">
+      <div class="ui small header">Time Email Sent</div>
+      <div class="data-text">
+       {{data?.createdAt | date : "medium"}}
+      </div>
+      </div>
+      <div class="data-field">
+       <div class="ui small header">Time System Sent Email</div>
+       <div class="data-text">
+        {{data?.createdAt | date : "medium"}}
+       </div>
+    </div>   <div class="data-field">
+     <div class="ui small header">Attachment</div>
+     <div class="data-text">
+       {{data?.attachments?.length ? "Yes" : "No"}}
+     </div>
+   </div>
+   <div class="data-field">
+    <div class="ui small header">Number of Attachments</div>
+    <div class="data-text">
+      {{data?.attachments?.length || 0}}
+    </div>
+  </div>
+     <div class="data-field">
+       <div class="ui small header">Status</div>
+       <div
+        class="ui circular medium label"
+        [ngStyle]="{
+          'background-color': getStatusColor(data?.status),
+          color: '#FFF'
+        }"
+      >
+        {{data?.status}}
+       </div>
+     </div>
+  </div>
+  <mat-dialog-actions class="actions" style="text-align: left; background: inherit; border: none; padding-left: 1.5rem;">
+   <button class="ui basic primary button close-btn" matDialogClose>
+     Back
+   </button>
+  </mat-dialog-actions>
+
+</div>

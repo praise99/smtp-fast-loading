@@ -1,8 +1,19 @@
-<div style="display: flex; flex: 1; overflow-y: hidden;">
-  <!-- <div style="width: 225px; height: 100%">
+<mat-toolbar *ngIf="isHandset$ | async" color="#fff">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav  fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)" class="mat-elevation-z2" style="width: 225px !important; position: absolute;">
+    <div style="width: 225px; height: 100%;">
     <app-sidebar></app-sidebar>
-  </div> -->
-  <div class="main">
+  </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- Main content goes here -->
+    <div class="main">
     <!-- <router-outlet></router-outlet> -->
     <div class="ui vertical segment" [ngClass]="{ loading: pendingArr.length }">
       <!-- Page Header -->
@@ -84,10 +95,12 @@
                 </div>
               </div>
               <!-- icon buttons -->
-              <!-- <div class="last table-cell icon-cell">
-                <img class="clickable" src="assets/Icons/eye.svg" suiPopup popupPlacement="top" popupInverted="true"
-                  popupText="View email request" (click)="viewEmailRequestModal(request)" />
-              </div> -->
+              <div class="last table-cell icon-cell">
+                <mat-dialog-actions>
+                  <img class="clickable" src="assets/Icons/eye.svg" suiPopup popupPlacement="top" popupInverted="true"
+                    popupText="View email request" (click)="viewEmailRequestModal(request)" />
+                </mat-dialog-actions>
+              </div>
             </div>
           </ng-container>
         </div>
@@ -131,4 +144,8 @@
     </div>
 
   </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <div style="display: flex; flex: 1; overflow-y: hidden;">
+
+</div> -->
