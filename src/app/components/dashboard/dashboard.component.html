@@ -1,9 +1,4 @@
-<div style="display: flex; flex: 1; overflow-y: hidden;">
-  <!-- <div style="width: 225px; height: 100%">
-    <app-sidebar></app-sidebar>
-  </div> -->
-  <div class="main">
-    <!-- <router-outlet></router-outlet> -->
+
     <div class="ui vertical segment" [ngClass]="{ loading: pendingArr.length }">
       <!-- Page Header -->
       <h2 class="ui primary header">Dashboard</h2>
@@ -78,13 +73,12 @@
                   {{ request?.status }}
                 </div>
               </div>
-
+              <!-- icon buttons -->
               <div class="last table-cell icon-cell">
-                <button mat-button id="eye-btn">
-                  <img src="assets/Icons/eye.svg" matTooltip="View email request"
-                    aria-label="Button that displays a tooltip when focused or hovered over"
-                    (click)="viewEmailRequestModal(request)" />
-                </button>
+                <mat-dialog-actions>
+                  <img class="clickable" src="assets/Icons/eye.svg" suiPopup popupPlacement="top" popupInverted="true"
+                    popupText="View email request" (click)="viewEmailRequestModal(request)" />
+                </mat-dialog-actions>
               </div>
             </div>
           </ng-container>
@@ -122,5 +116,6 @@
       </div>
     </div>
 
-  </div>
-</div>
+<!-- <div style="display: flex; flex: 1; overflow-y: hidden;">
+
+</div> -->

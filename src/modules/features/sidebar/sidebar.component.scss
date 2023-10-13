@@ -7,7 +7,8 @@
 
 :host {
   #sidebar {
-    width: 100%;
+    // width: 500px !important;
+    width: 225px !important;
     padding-top: 20px;
     // background: $main-color;
     color: #fff;
@@ -20,7 +21,7 @@
   .ui.secondary.vertical.pointing.menu .item {
     color: #fff;
     padding-left: 3em;
-    margin-bottom: 0.5em;
+    margin-bottom: .5em;
     cursor: pointer;
     // svg {
     // 	path {
@@ -49,12 +50,14 @@
     border-color: #005de0;
 
     border-right-width: 5px;
+
     svg {
       path {
         fill: #005de0;
       }
     }
   }
+
   .navmenu-icon {
     stroke: white;
     stroke-width: 1.5;

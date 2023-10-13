@@ -1,0 +1,107 @@
+:host {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px !important;
+}
+
+:host {
+  padding: 0 2rem;
+  padding-left: 10px;
+  padding-bottom: 32px;
+}
+
+p {
+  margin: 0 0 3em;
+  line-height: 1.4285em;
+}
+
+.ui.primary.button.close-btn {
+  min-width: 100px;
+  box-shadow: 0 0 0 1px #031f68 inset !important;
+  color: #031f68 !important;
+}
+
+.ui.primary.header,
+.ui.header.secondary {
+  color: #031F68;
+  height: 40px;
+  margin: 0;
+}
+
+.ui.primary.header {
+  margin-top: -10px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(34, 36, 38, .15);
+}
+
+.ui.header.secondary {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+
+.content {
+  padding: 0rem !important;
+}
+
+.ui.header>.icon {
+  float: right;
+  font-size: 1em;
+  margin: 0;
+}
+
+.section-wrap {
+  background: #f0f1f8;
+  border-radius: 4px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 12px;
+}
+
+.scroll-wrapper {
+  height: calc(100vh - 170px);
+  overflow: auto;
+  padding: 1.5rem;
+  padding-right: 10px;
+}
+
+
+.data-field {
+  margin-bottom: 24px;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 19px;
+  background: #A4A4A4;
+  border-radius: 37px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 11px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+
+}
+
+// status label
+.ui.label {
+  &.green {
+    background-color: #5FD3A4 !important;
+  }
+
+  &.red {
+    background-color: #FB4037 !important;
+  }
+
+  &.orange {
+    background-color: #FFAC33 !important;
+  }
+}

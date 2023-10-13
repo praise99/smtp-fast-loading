@@ -1,21 +1,5 @@
 @import "/src/styles.scss";
 
-#container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-y: hidden;
-}
-
-.main {
-  flex: 1;
-  overflow-y: auto !important;
-  padding: 20px;
-  background: white !important;
-  // background: transparent;
-  // z-index: 1000;
-}
-
 .ui.primary.header {
   font-size: 20px;
   margin-bottom: 20px;

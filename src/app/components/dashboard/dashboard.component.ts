@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // import { ModalSize, SuiModalService } from '@richardlt/ng2-semantic-ui';
-// import { ViewEmailRequestModal } from '../../modals/view-email-request-modal/view-email-request-modal.component';
+import { ViewEmailRequestModalComponent } from '../../modals/view-email-request-modal/view-email-request-modal.component';
 import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent, } from '@angular/material/paginator';
+import { NgDialogAnimationService } from 'ng-dialog-animation';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -46,18 +49,38 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(
-    // private modalService: SuiModalService,
+
+    private matDialog: MatDialog,
     private dashboardService: DashboardService,
-    private emailRequestService: EmailRequestService,) { }
+    private emailRequestService: EmailRequestService,
+    public dialog: NgDialogAnimationService,
+   ) {}
 
   ngOnInit(): void {
+
     this.getDashboardData();
     this.getEmailRequest(1);
   }
 
 
   viewEmailRequestModal(request: any) {
-    // this.modalService.open(new ViewEmailRequestModal('View Email Request', request, ModalSize.Tiny))
+
+    this.dialog.open(ViewEmailRequestModalComponent,{
+      width: "540px",
+      data: request,
+      animation: { to: "left" },
+      position: { rowEnd: "0" },
+      enterAnimationDuration: 0,
+      exitAnimationDuration: 3
+    })
+    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    //   data: { name: this.name, animal: this.animal },
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   }
 
   getDashboardData() {
