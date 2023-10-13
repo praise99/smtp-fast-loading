@@ -26,7 +26,8 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   exports: [
     HeaderComponent,

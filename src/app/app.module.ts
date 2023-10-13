@@ -19,11 +19,7 @@ import { AuthGuard } from './components/guards/auth.guard';
 import { AuthenticationInterceptor } from './components/interceptors/authentication.interceptor';
 import { RedirectInterceptor } from './components/interceptors/redirect.interceptor';
 import { MaterialModule } from './material.module';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { ViewEmailRequestModalComponent } from './components/modals/view-email-request-modal/view-email-request-modal.component';
+import { ViewEmailRequestModalComponent } from './modals/view-email-request-modal/view-email-request-modal.component';
 import { DrawerService } from './services/drawer.service';
 @NgModule({
   declarations: [
@@ -45,7 +41,7 @@ import { DrawerService } from './services/drawer.service';
     BrowserAnimationsModule,
     SharedModule,
     FeaturesModule,
-
+    MaterialModule,
     // SuiModule
   ],
   // exports: [MaterialModule],

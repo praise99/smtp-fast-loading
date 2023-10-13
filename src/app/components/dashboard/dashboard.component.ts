@@ -1,17 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 // import { ModalSize, SuiModalService } from '@richardlt/ng2-semantic-ui';
-import { ViewEmailRequestModalComponent } from '../modals/view-email-request-modal/view-email-request-modal.component';
+import { ViewEmailRequestModalComponent } from '../../modals/view-email-request-modal/view-email-request-modal.component';
 import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSidenav } from '@angular/material/sidenav';
-
-
-import { Observable } from 'rxjs';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { map, share } from 'rxjs/operators';
-import { DrawerService } from 'src/app/services/drawer.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { PageEvent, } from '@angular/material/paginator';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -54,35 +48,14 @@ export class DashboardComponent implements OnInit {
 
 
   constructor(
-    private breakpointObserver: BreakpointObserver,
-    private drawerService: DrawerService,
+
     private matDialog: MatDialog,
     private dashboardService: DashboardService,
     private emailRequestService: EmailRequestService,
-    public dialog: MatDialog) {}
-
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      share()
-    );
-
-  isSidenavOpen = false;
-
-  toggleSidenav() {
-    this.isSidenavOpen = !this.isSidenavOpen;
-  }
-
-  @ViewChild('sidenav') sidenav!: MatSidenav;
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<ViewEmailRequestModalComponent>) {}
 
   ngOnInit(): void {
-    // Open the sidenav when the component initializes
-    // this.sidenav.open();
-
-    this.drawerService.drawerToggleSubject.subscribe(() => {
-      // this.sidenav.toggle();
-    });
 
     this.getDashboardData();
     this.getEmailRequest(1);
@@ -93,7 +66,7 @@ export class DashboardComponent implements OnInit {
 
     this.matDialog.open(ViewEmailRequestModalComponent,{
       width: '540px',
-      data: request
+      data: request,
     })
     // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
     //   data: { name: this.name, animal: this.animal },

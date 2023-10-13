@@ -8,11 +8,11 @@ import { AppLayoutComponent } from 'src/modules/features/layout/app-layout/app-l
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  {
-    path: 'dashboard', component: DashboardComponent, data: { preload: true },
-    canActivate: [AuthGuard],
-}
+//   { path: 'login', component: LoginComponent },
+//   {
+//     path: 'dashboard', component: DashboardComponent, data: { preload: true },
+//     canActivate: [AuthGuard],
+// }
   { path: 'login', component: PublicLayoutComponent },
   {
     path: 'dashboard', component: AppLayoutComponent,

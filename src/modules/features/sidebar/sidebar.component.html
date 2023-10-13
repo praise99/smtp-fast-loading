@@ -11,7 +11,15 @@
       </div>
     </div>
   </div>
-  <div tamsyMargin marginB="2" class="item" routerLink="users" routerLinkActive="active">
+  <div tamsyMargin marginB="2" class="item" (click)="logout()" routerLink="/login" routerLinkActive="active">
+    <div class="middle aligned content">
+      <div class="header">
+        <i class="sign out alternate icon"></i>
+        Logout
+      </div>
+    </div>
+  </div>
+  <!-- <div tamsyMargin marginB="2" class="item" routerLink="users" routerLinkActive="active">
     <div class="middle aligned content">
       <div class="header">
         <svg class="navmenu-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
@@ -127,5 +135,5 @@
         Audit Trail
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
