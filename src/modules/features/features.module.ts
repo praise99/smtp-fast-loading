@@ -10,6 +10,8 @@ import { MaterialModule } from 'src/app/material.module';
 import { LoginComponent } from '../../app/components/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -26,7 +28,12 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      positionClass: "toast-top-center"
+    }),
   ],
   exports: [
     HeaderComponent,

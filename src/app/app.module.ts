@@ -15,7 +15,7 @@ import { ProfileService } from './services/profile.services';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/modules/shared/shared.module';
 import { FeaturesModule } from 'src/modules/features/features.module';
-import { MaterialModule } from './material.module'; import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
