@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 // import { ModalSize, SuiModalService } from '@richardlt/ng2-semantic-ui';
-// import { ViewEmailRequestModal } from '../../modals/view-email-request-modal/view-email-request-modal.component';
+import { ViewEmailRequestModalComponent } from '../../modals/view-email-request-modal/view-email-request-modal.component';
 import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { PageEvent, } from '@angular/material/paginator';
+import { NgDialogAnimationService } from 'ng-dialog-animation';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,7 +17,7 @@ export class DashboardComponent implements OnInit {
   success: any;
   error: any;
   totalItems: number = 0;
-  rows: number = 5  ;
+  rows: number = 5;
   dashboard: any;
   emailRequests: any;
 
@@ -27,34 +31,69 @@ export class DashboardComponent implements OnInit {
 
   currentPage: number = 1;
   maxSize: number = 4;
+  pageSlice: any;
+
+  length = 50;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
+  hidePageSize = false;
+  showPageSizeOptions = true;
+  showFirstLastButtons = true;
+  disabled = false;
+
+  pageEvent!: PageEvent;
+  startIndex: any;
+  endIndex: any;
+
 
   constructor(
-    // private modalService: SuiModalService,
+
+    private matDialog: MatDialog,
     private dashboardService: DashboardService,
-    private emailRequestService: EmailRequestService) {}
+    private emailRequestService: EmailRequestService,
+    public dialog: NgDialogAnimationService,
+   ) {}
 
   ngOnInit(): void {
+
     this.getDashboardData();
     this.getEmailRequest(1);
   }
 
+
   viewEmailRequestModal(request: any) {
-    // this.modalService.open(new ViewEmailRequestModal('View Email Request', request, ModalSize.Tiny))
+
+    this.dialog.open(ViewEmailRequestModalComponent,{
+      width: "540px",
+      data: request,
+      animation: { to: "left" },
+      position: { rowEnd: "0" },
+      enterAnimationDuration: 0,
+      exitAnimationDuration: 3
+    })
+    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    //   data: { name: this.name, animal: this.animal },
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   }
 
   getDashboardData() {
     this.callStarted();
-    this.dashboardService.getDashboardStatistics().subscribe({
-      next: (res: any) => {
-        this.dashboard = res;
-        this.error = null;
-        this.callCompleted();
-      },
-      error: (error: any) => {
+    this.dashboardService.getDashboardStatistics().subscribe((res: any) => {
+      this.dashboard = res;
+      this.error = null;
+      this.callCompleted();
+    },
+      (error: any) => {
         this.callCompleted();
         this.error = error?.error?.message ? error.error.message : error;
-      }
-    })
+      })
   }
 
   getEmailRequest(page: number) {
@@ -63,18 +102,19 @@ export class DashboardComponent implements OnInit {
       limit: this.rows
     }
     this.callStarted();
-    this.emailRequestService.getEmailRequest({params}).subscribe({
+    this.emailRequestService.getEmailRequest({ params: params }).subscribe({
       next: (res: any) => {
-        console.log(res);
         this.emailRequests = res.data;
         this.totalItems = res?.totalRecords;
+        this.currentPage = page;
+
         this.callCompleted();
       },
       error: (res: any) => {
-        console.log(res);
+        this.error = res?.message ? res.message : res;
         this.callCompleted();
       }
-  })
+    })
   }
 
   callStarted() {
@@ -85,8 +125,9 @@ export class DashboardComponent implements OnInit {
     this.pendingArr.pop();
   }
 
-  nextPage(page: number) {
-    this.getEmailRequest(page)
+  nextPage(event: PageEvent) {
+    this.currentPage = event.pageIndex + 1;
+    this.getEmailRequest(event.pageIndex + 1)
   }
 
   getStatusColor(status: string) {
@@ -101,4 +142,5 @@ export class DashboardComponent implements OnInit {
         return '#E4E5E7'
     }
   }
+
 }

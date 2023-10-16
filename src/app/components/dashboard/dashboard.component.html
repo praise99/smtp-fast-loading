@@ -1,37 +1,27 @@
-<div style="display: flex; flex: 1; overflow-y: hidden;">
-  <!-- <div style="width: 225px; height: 100%">
-    <app-sidebar></app-sidebar>
-  </div> -->
-  <div class="main">
-    <!-- <router-outlet></router-outlet> -->
+
     <div class="ui vertical segment" [ngClass]="{ loading: pendingArr.length }">
       <!-- Page Header -->
       <h2 class="ui primary header">Dashboard</h2>
       <div class="ui divider"></div>
 
-      <!-- Error message -->
-      <div class="attached warning" *ngIf="error">
-        <div class="header">
-          {{error | json}}
-        </div>
-      </div>
+
       <div style="margin-bottom: 20px;"></div>
 
       <!-- Statistics Container -->
       <div class="content flex-card">
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">USERS</div>
           <h2 class="card-content">{{ dashboard?.users }}</h2>
         </div>
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">APPLICATIONS</div>
           <h2 class="card-content">{{ dashboard?.applications }}</h2>
         </div>
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">UNSUBSCRIBERS</div>
           <h2 class="card-content">{{ dashboard?.unsubscribers }}</h2>
         </div>
-        <div class="card primary dashboard-card">
+        <div class="card dashboard-card">
           <div class="card-header">EMAIL REQUESTS</div>
           <h2 class="card-content">{{ dashboard?.emailRequests }}</h2>
         </div>
@@ -48,7 +38,7 @@
           <div class="ui inverted segment header-row table-row">
             <!-- table headers -->
             <div class="first table-cell check-cell">
-              <!-- <sui-checkbox></sui-checkbox> -->
+              <input type="checkbox" class="header-checkbox" name="" id="">
             </div>
             <div class="table-cell">Application</div>
             <div class="table-cell">API Key</div>
@@ -65,7 +55,7 @@
             <div class="table-row">
               <!-- checkbox cell -->
               <div class="check-cell table-cell first">
-                <!-- <sui-checkbox></sui-checkbox> -->
+                <input type="checkbox" name="" id="">
               </div>
               <!-- table cells -->
               <div class="table-cell">{{ request?.apikey?.application?.applicationName }}</div>
@@ -84,10 +74,11 @@
                 </div>
               </div>
               <!-- icon buttons -->
-              <!-- <div class="last table-cell icon-cell">
-                <img class="clickable" src="assets/Icons/eye.svg" suiPopup popupPlacement="top" popupInverted="true"
-                  popupText="View email request" (click)="viewEmailRequestModal(request)" />
-              </div> -->
+              <div class="last table-cell icon-cell">
+                <button style="border: none; background: transparent;">
+                  <img class="clickable" src="assets/Icons/eye.svg"  matTooltip="View email request" (click)="viewEmailRequestModal(request)" />
+                </button>
+              </div>
             </div>
           </ng-container>
         </div>
@@ -115,20 +106,15 @@
             </div>
           </div>
           <div class="column right aligned pagination menu" style="margin-left: auto">
-            <!-- <sui-pagination
-          class="small"
-          [collectionSize]="totalItems"
-          [pageSize]="rows"
-          [maxSize]="maxSize"
-          [hasEllipses]="false"
-          [page]="currentPage"
-          (pageChange)="nextPage($event)"
-        >
-        </sui-pagination> -->
+            <mat-paginator [length]="totalItems" [showFirstLastButtons]="showFirstLastButtons" [pageSize]="rows"
+              [hidePageSize]="true" [pageSizeOptions]="[3,5,10]" (page)="nextPage($event)" aria-label="Select page">
+            </mat-paginator>
+
           </div>
         </div>
       </div>
     </div>
 
-  </div>
-</div>
+<!-- <div style="display: flex; flex: 1; overflow-y: hidden;">
+
+</div> -->

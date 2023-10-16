@@ -1,0 +1,21 @@
+@import "/src/styles.scss";
+
+#container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto !important;
+  padding: 20px;
+  background: white !important;
+  z-index: 1000;
+  overflow: scroll;
+  min-width: 1000px;
+}
+
+.side-bar {
+  background: #142656;
+}

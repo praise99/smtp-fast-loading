@@ -1,15 +1,16 @@
-@import '/src/styles.scss';
+@import "/src/styles.scss";
 
 .ui.fluid.pointing.vertical.menu.secondary {
-  background: $main-color;
+  // background: $main-color;
   width: 300px;
 }
 
 :host {
   #sidebar {
-    width: 500px;
+    // width: 500px !important;
+    width: 225px !important;
     padding-top: 20px;
-    background: $main-color;
+    // background: $main-color;
     color: #fff;
     height: 100vh;
     position: fixed;
@@ -18,16 +19,16 @@
   }
 
   .ui.secondary.vertical.pointing.menu .item {
-		color: #fff;
-		padding-left: 3em;
-		margin-bottom: .5em;
-		cursor: pointer;
-		// svg {
-		// 	path {
-		// 		fill: #fff;
-		// 	}
-		// }
-	}
+    color: #fff;
+    padding-left: 3em;
+    margin-bottom: .5em;
+    cursor: pointer;
+    // svg {
+    // 	path {
+    // 		fill: #fff;
+    // 	}
+    // }
+  }
 
   #group.menu {
     margin-top: -25px;
@@ -45,18 +46,19 @@
   }
 
   .ui.secondary.vertical.pointing.menu .active.item {
-		color:#005de0 ;
-		border-color: #005de0;
+    color: #005de0;
+    border-color: #005de0;
 
-		border-right-width: 5px;
-		svg {
-			path {
-				fill: #005de0;
-			}
-		}
-	}
+    border-right-width: 5px;
+
+    svg {
+      path {
+        fill: #005de0;
+      }
+    }
+  }
+
   .navmenu-icon {
-
     stroke: white;
     stroke-width: 1.5;
     stroke-linecap: round;
@@ -75,8 +77,8 @@
     }
   }
 
-  .ui.vertical.menu .item>i.icon,
-  .ui.vertical.menu .item>i.icons {
+  .ui.vertical.menu .item > i.icon,
+  .ui.vertical.menu .item > i.icons {
     width: 1.18em;
     float: left;
     margin: 0 0 0 0.5em;
@@ -95,6 +97,3 @@ div.header {
     width: 1.5em;
   }
 }
-
-
-

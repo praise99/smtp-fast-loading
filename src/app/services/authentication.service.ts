@@ -57,17 +57,6 @@ export class AuthenticationService {
     localStorage.removeItem(this.authTokenKey);
   }
 
-
-  /**
-  * @author Opeoluwa
-   * @dateCreated 4th Aug 2023
-   * @description The function returns the currently authenticated user's data.
-   * @returns An object representing the currently authenticated user's data or `null` if the user is not authenticated.
-   * @dependencies None.
-   * @modifiedBy - None.
-   * @dateModified -None
-   * @reasonForModification - None
-   */
   getUser(): any {
     return this.userSubject.value;
   }
@@ -88,6 +77,10 @@ export class AuthenticationService {
   }
 
 
+  getCurrentUser(): any {
+    let userData: any = localStorage.getItem('userData');
+    return JSON.parse(userData);
+  }
 
   // Unsubscribe
 }
