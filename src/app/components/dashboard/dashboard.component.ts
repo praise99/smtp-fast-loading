@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { EmailRequestService } from 'src/app/services/email-request.service';
 import { DashboardService } from 'src/app/services/dashboard.services';
 import { PageEvent, } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,7 +17,7 @@ export class DashboardComponent implements OnInit {
   success: any;
   error: any;
   totalItems: number = 0;
-  rows: number = 5;
+  rows: number = 3;
   dashboard: any;
   emailRequests: any;
 
@@ -28,29 +31,20 @@ export class DashboardComponent implements OnInit {
 
   currentPage: number = 1;
   maxSize: number = 4;
-  pageSlice: any;
-
-  length = 50;
-  pageSize = 10;
-  pageIndex = 0;
   pageSizeOptions = [5, 10, 25];
 
-  hidePageSize = false;
-  showPageSizeOptions = true;
-  showFirstLastButtons = true;
-  disabled = false;
-
   pageEvent!: PageEvent;
-  startIndex: any;
-  endIndex: any;
 
 
   constructor(
     // private modalService: SuiModalService,
     private dashboardService: DashboardService,
-    private emailRequestService: EmailRequestService,) { }
+    private emailRequestService: EmailRequestService,
+    private _snackBar: MatSnackBar,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.clearError();
     this.getDashboardData();
     this.getEmailRequest(1);
   }
@@ -61,19 +55,29 @@ export class DashboardComponent implements OnInit {
   }
 
   getDashboardData() {
+    this.clearError();
     this.callStarted();
-    this.dashboardService.getDashboardStatistics().subscribe((res: any) => {
-      this.dashboard = res;
-      this.error = null;
-      this.callCompleted();
-    },
-      (error: any) => {
+    this.dashboardService.getDashboardStatistics().subscribe(
+      (res: any) => {
+        this.dashboard = res;
+        this.error = null;
+
+        console.log('board xuccess')
         this.callCompleted();
-        this.error = error?.error?.message ? error.error.message : error;
+      },
+      (error: any) => {
+        console.log('board err')
+        this.callCompleted();
+        this.error = error?.message ? error.message : error;
+        // this.toastr.error(`${this.error}`, 'Error');
       })
   }
-
+  clearError() {
+    this.error = '';
+    this.toastr.clear();
+  }
   getEmailRequest(page: number) {
+    this.clearError();
     const params = {
       page: page,
       limit: this.rows
@@ -81,17 +85,20 @@ export class DashboardComponent implements OnInit {
     this.callStarted();
     this.emailRequestService.getEmailRequest({ params: params }).subscribe({
       next: (res: any) => {
+        this.error = null;
         this.emailRequests = res.data;
         this.totalItems = res?.totalRecords;
         this.currentPage = page;
-
+        console.log('success', res)
         this.callCompleted();
       },
       error: (res: any) => {
         this.error = res?.message ? res.message : res;
+
         this.callCompleted();
+        // this.toastr.error(`${this.error}`, 'Error');
       }
-    })
+    });
   }
 
   callStarted() {

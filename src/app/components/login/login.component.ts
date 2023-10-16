@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,14 @@ export class LoginComponent {
   loginBtnClicked = false;
   error: any;
   success: any
+  loginError: any;
 
 
   constructor(private formBuilder: FormBuilder,
     private auth: AuthenticationService,
     private router: Router,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar,
+    private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -30,9 +33,14 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+
   }
 
   login() {
+    if (this.loginError) {
+      this.loginError.dismiss();
+    }
+
     if (this.loginForm.valid) {
       const credentials = this.loginForm.value;
       this.loginBtnClicked = true;
@@ -46,13 +54,7 @@ export class LoginComponent {
             } else {
               // Handle login failure, show appropriate error message
               this.error = 'Error during Login!';
-
-              this._snackBar.open(this.error, 'X', {
-                verticalPosition: 'top',
-                horizontalPosition: 'center',
-                panelClass: ['red-snackbar']
-              });
-
+              this.toastr.error(`${this.error}`, 'Login Error');
             }
             this.loginBtnClicked = false;
           },
@@ -60,11 +62,7 @@ export class LoginComponent {
             // Handle login error and show error message
             this.error = error?.error?.message ? error.error.message : error;
 
-            this._snackBar.open(this.error, 'X', {
-              verticalPosition: 'top',
-              horizontalPosition: 'center',
-              panelClass: ['red-snackbar']
-            });
+            this.toastr.error(`${this.error}`, 'Login Error');
             this.loginBtnClicked = false;
           }
         );
