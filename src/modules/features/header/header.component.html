@@ -1,17 +1,8 @@
 <!-- @format -->
 <div class="toolbar" paddingY="0" paddingX="10" appPadding>
-  <div
-    style="display: flex; align-items: center"
-    class="item header"
-    id="no-borderline"
-  >
-    <img
-      class="ui image logo"
-      width="72px"
-      height="72px"
-      src="./../../../../assets/Images/logo (2).svg"
-      style="width: 70%; height: fit-content"
-    />
+  <div style="display: flex; align-items: center" class="item header" id="no-borderline">
+    <img class="ui image logo" width="72px" height="72px" src="./../../../../assets/Images/logo (2).svg"
+      style="width: 70%; height: fit-content" alt="esl logo" />
     <div class="logo-name">
       <p>SMTP API Manangement System</p>
     </div>
@@ -28,16 +19,9 @@
           {{ loggedInUser?.role.roleName }}
         </p>
       </div>
-      <img
-        style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover"
-        src="{{ loggedInUser?.image }}"
-        alt="profile photo"
-      />
-      <i
-        style="color: #fff"
-        class="angle down icon"
-        (click)="toggleDropdown()"
-      ></i>
+      <img style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover" src="{{ loggedInUser?.image }}"
+        alt="profile photo" />
+      <i style="color: #fff" class="angle down icon" (click)="toggleDropdown()"></i>
     </div>
 
     <div id="user" class="dropdown-content" *ngIf="isToggled">
@@ -45,45 +29,34 @@
         <div class="ui grid">
           <div class="five wide column">
             <div class="ui basic fill segment">
-              <img
-                style="
+              <img style="
                   position: relative;
                   left: 1.2rem;
                   top: 0.9rem;
                   border-radius: 50%;
                   width: 72px;
                   height: 72px;
-                "
-                height="100px"
-                width="100px"
-                class="ui circular image"
-                src="{{ loggedInUser?.image }}"
-                alt="user profile photo"
-              />
+                " height="100px" width="100px" class="ui circular image" src="{{ loggedInUser?.image }}"
+                alt="user profile photo" />
             </div>
           </div>
           <div class="eleven wide column">
             <div class="ui basic fill segment">
               <div style="padding-bottom: 10px">
-                <strong style="text-transform: capitalize"
-                  >{{ loggedInUser?.firstName }}
-                  {{ loggedInUser?.lastName }}</strong
-                >
+                <strong style="text-transform: capitalize">{{ loggedInUser?.firstName }}
+                  {{ loggedInUser?.lastName }}</strong>
               </div>
               <div style="padding-bottom: 5px">
                 {{ loggedInUser?.role.roleName }}
               </div>
-              <div
-                style="
+              <div style="
                   padding-bottom: 10px;
                   color: #aeaeae;
                   white-space: pre-line;
-                "
-              >
+                ">
                 {{ loggedInUser?.email }}
               </div>
-              <a
-                style="
+              <a style="
                   border-radius: 0.25rem;
                   width: 14.125rem;
                   color: #fff;
@@ -92,27 +65,19 @@
                   font-weight: 400;
                   font-size: 0.9rem;
                   background-color: #142656;
-                "
-                class="ui mini button"
-                routerLink="/admin/settings/manage-profile"
-                >My Profile</a
-              >
+                " class="ui mini button" routerLink="/admin/settings/manage-profile">My Profile</a>
             </div>
           </div>
         </div>
-        <div
-          style="
+        <div style="
             background: #f0f1f8 !important;
             width: 26.5rem;
             position: relative;
             padding-left: 10px;
             margin-top: 10px;
-          "
-          class="buttons"
-        >
+          " class="buttons">
           <div class="btn">
-            <button
-              style="
+            <button style="
                 color: #142656;
                 font-weight: 500;
                 margin: 1rem 0.2rem;
@@ -121,14 +86,11 @@
                 top: 0.5rem;
                 height: 1rem;
                 cursor: pointer;
-              "
-              (click)="resetPasswordModal()"
-            >
+              " (click)="resetPasswordModal()">
               Change password
             </button>
             <hr style="margin: 10px 5px" />
-            <button
-              style="
+            <button style="
                 color: #142656;
                 font-weight: 500;
                 margin: 1rem 0.2rem;
@@ -137,9 +99,7 @@
                 height: 1rem;
                 cursor: pointer;
                 border: none;
-              "
-              (click)="logout()"
-            >
+              " (click)="logout()">
               Sign out
             </button>
           </div>

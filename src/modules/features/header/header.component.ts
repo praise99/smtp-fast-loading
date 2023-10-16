@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   // @Input() isLoggedIn: boolean = false;
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService,
+    private router: Router) { }
   loggedInUser = this.authService.getCurrentUser();
   isToggled: boolean = false;
   toggleDropdown() {
@@ -22,7 +23,10 @@ export class HeaderComponent implements OnInit {
   }
 
   resetPasswordModal() { }
-  logout() { }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
 
   ngOnInit(): void {
     // this.currentlyLoggedInUser = this.usersService.getCurrentUser();
