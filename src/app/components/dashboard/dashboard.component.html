@@ -75,10 +75,9 @@
               </div>
               <!-- icon buttons -->
               <div class="last table-cell icon-cell">
-                <mat-dialog-actions>
-                  <img class="clickable" src="assets/Icons/eye.svg" suiPopup popupPlacement="top" popupInverted="true"
-                    popupText="View email request" (click)="viewEmailRequestModal(request)" />
-                </mat-dialog-actions>
+                <button style="border: none; background: transparent;">
+                  <img class="clickable" src="assets/Icons/eye.svg"  matTooltip="View email request" (click)="viewEmailRequestModal(request)" />
+                </button>
               </div>
             </div>
           </ng-container>
