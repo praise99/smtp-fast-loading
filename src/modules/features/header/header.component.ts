@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
   isToggled: boolean = false;
   toggleDropdown() {
     this.isToggled = !this.isToggled;
-    console.log('user ', this.loggedInUser)
   }
 
   resetPasswordModal() { }
