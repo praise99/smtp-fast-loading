@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +46,7 @@ import { DrawerService } from './services/drawer.service';
   ],
   // exports: [MaterialModule],
   providers: [
+    provideClientHydration(),
     AuthenticationService,
     DashboardService,
     EmailRequestService,
